@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Illustrazione per Villa d’Este, Tivoli">
+<rect width="800" height="450" fill="#f6f4ef"/>
+<circle cx="680" cy="90" r="130" fill="#8b3f34" opacity=".16"/>
+<circle cx="120" cy="85" r="70" fill="#b8893b" opacity=".18"/>
+<circle cx="250" cy="280" r="90" fill="#dbe9df"/><path d="M150 315 C260 210 370 360 500 245 S640 250 720 315" fill="none" stroke="#b8893b" stroke-width="16"/><rect x="500" y="185" width="125" height="85" fill="#fffdf8" opacity=".92"/><path d="M485 185 L562 125 L640 185 Z" fill="#8b3f34" opacity=".92"/>
+<rect x="0" y="352" width="800" height="98" fill="#8b3f34" opacity=".95"/>
+<text x="42" y="393" fill="#fffdf8" font-family="Georgia, serif" font-size="30" font-weight="700">Villa d’Este, Tivoli</text>
+<text x="42" y="424" fill="#fffdf8" font-family="Arial, sans-serif" font-size="15">Giardino rinascimentale italiano e giardino d’acqua</text>
+</svg>

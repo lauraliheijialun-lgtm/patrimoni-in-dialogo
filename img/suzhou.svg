@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Illustrazione per Giardini classici di Suzhou 苏州古典园林">
+<rect width="800" height="450" fill="#f6f4ef"/>
+<circle cx="680" cy="90" r="130" fill="#1f6f6b" opacity=".16"/>
+<circle cx="120" cy="85" r="70" fill="#b8893b" opacity=".18"/>
+<path d="M130 325 C240 205 410 390 560 235 S680 265 740 330" fill="none" stroke="#6fa8a4" stroke-width="18"/><rect x="210" y="185" width="360" height="110" fill="#fffdf8" opacity=".9"/><path d="M185 185 L390 95 L595 185 Z" fill="#b8893b" opacity=".9"/>
+<rect x="0" y="352" width="800" height="98" fill="#1f6f6b" opacity=".95"/>
+<text x="42" y="393" fill="#fffdf8" font-family="Georgia, serif" font-size="30" font-weight="700">Giardini classici di Suzhou 苏州古典园林</text>
+<text x="42" y="424" fill="#fffdf8" font-family="Arial, sans-serif" font-size="15">Sistema di giardini storici privati nella città di Suzhou</text>
+</svg>

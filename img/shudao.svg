@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Illustrazione per Shudao 蜀道">
+<rect width="800" height="450" fill="#f6f4ef"/>
+<circle cx="680" cy="90" r="130" fill="#1f6f6b" opacity=".16"/>
+<circle cx="120" cy="85" r="70" fill="#b8893b" opacity=".18"/>
+<path d="M80 300 C180 210 230 350 360 250 S560 210 710 310" fill="none" stroke="#b8893b" stroke-width="20" stroke-linecap="round"/><path d="M80 300 C180 210 230 350 360 250 S560 210 710 310" fill="none" stroke="#fffdf8" stroke-width="4" stroke-dasharray="18 18"/>
+<rect x="0" y="352" width="800" height="98" fill="#1f6f6b" opacity=".95"/>
+<text x="42" y="393" fill="#fffdf8" font-family="Georgia, serif" font-size="30" font-weight="700">Shudao 蜀道</text>
+<text x="42" y="424" fill="#fffdf8" font-family="Arial, sans-serif" font-size="15">Sistema antico di vie montane tra Cina centrale e Sichuan</text>
+</svg>

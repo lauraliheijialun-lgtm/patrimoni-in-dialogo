@@ -1,0 +1,12 @@
+function toggleMenu(){document.querySelector('.navlinks').classList.toggle('open')}
+function setupAccordions(){document.querySelectorAll('.accordion button').forEach(btn=>{btn.addEventListener('click',()=>{const p=btn.nextElementSibling;p.style.display=p.style.display==='block'?'none':'block';btn.setAttribute('aria-expanded',p.style.display==='block')})})}
+function openTab(evt, id){document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));document.querySelectorAll('.tab-button').forEach(el=>el.classList.remove('active'));document.getElementById(id).classList.add('active');evt.currentTarget.classList.add('active')}
+function openModal(id){document.getElementById(id).style.display='block'}
+function closeModal(id){document.getElementById(id).style.display='none'}
+window.onclick=function(e){document.querySelectorAll('.modal').forEach(m=>{if(e.target==m)m.style.display='none'})}
+function filterCards(){const q=(document.getElementById('searchInput')?.value||'').toLowerCase();const kind=(document.getElementById('kindFilter')?.value||'all');document.querySelectorAll('[data-card]').forEach(card=>{const text=card.innerText.toLowerCase();const k=card.dataset.kind;card.style.display=(text.includes(q)&&(kind==='all'||kind===k))?'block':'none'})}
+function filterTable(){const q=(document.getElementById('tableSearch')?.value||'').toLowerCase();document.querySelectorAll('#dataTable tbody tr').forEach(row=>{row.style.display=row.innerText.toLowerCase().includes(q)?'':'none'})}
+let slideIndex=0;function showSlide(n){const slides=document.querySelectorAll('.slide');if(!slides.length)return;slideIndex=(n+slides.length)%slides.length;slides.forEach(s=>s.classList.remove('active'));slides[slideIndex].classList.add('active')}function nextSlide(delta){showSlide(slideIndex+delta)}
+function setupBackTop(){const b=document.querySelector('.backtop');if(!b)return;window.addEventListener('scroll',()=>{b.style.display=window.scrollY>600?'inline-flex':'none'})}
+function announcePoint(name){const box=document.getElementById('mapInfo'); if(box) box.innerHTML='<strong>'+name+'</strong><br>Questo punto mostra la posizione approssimativa nel progetto. Apri la scheda item o la mappa OSM per il dettaglio.'}
+window.addEventListener('DOMContentLoaded',()=>{setupAccordions();setupBackTop();showSlide(0)})

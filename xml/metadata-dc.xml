@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <dc:description rdf:about="../items/shudao.html">
+    <dc:identifier>S01</dc:identifier>
+    <dc:title>Shudao 蜀道</dc:title>
+    <dc:coverage>Sichuan / Shaanxi / Gansu</dc:coverage>
+    <dc:subject>Vie storiche; via storica / cultural route; Lista Tentativa UNESCO</dc:subject>
+    <dc:relation>Via Appia. Regina Viarum</dc:relation>
+    <dc:source>https://whc.unesco.org/en/tentativelists/5994/</dc:source>
+  </dc:description>
+  <dc:description rdf:about="../items/via-appia.html">
+    <dc:identifier>S02</dc:identifier>
+    <dc:title>Via Appia. Regina Viarum</dc:title>
+    <dc:coverage>Lazio, Campania, Basilicata, Puglia</dc:coverage>
+    <dc:subject>Vie storiche; via storica / cultural route; Patrimonio Mondiale UNESCO</dc:subject>
+    <dc:relation>Shudao 蜀道</dc:relation>
+    <dc:source>https://whc.unesco.org/en/list/1708/</dc:source>
+  </dc:description>
+  <dc:description rdf:about="../items/yiheyuan.html">
+    <dc:identifier>S03</dc:identifier>
+    <dc:title>Palazzo d’Estate 颐和园</dc:title>
+    <dc:coverage>Pechino</dc:coverage>
+    <dc:subject>Giardini e acqua; giardino imperiale; Patrimonio Mondiale UNESCO</dc:subject>
+    <dc:relation>Villa d’Este</dc:relation>
+    <dc:source>https://whc.unesco.org/en/list/880/</dc:source>
+  </dc:description>
+  <dc:description rdf:about="../items/villa-deste.html">
+    <dc:identifier>S04</dc:identifier>
+    <dc:title>Villa d’Este, Tivoli</dc:title>
+    <dc:coverage>Tivoli, Lazio</dc:coverage>
+    <dc:subject>Giardini e acqua; villa e giardino rinascimentale; Patrimonio Mondiale UNESCO</dc:subject>
+    <dc:relation>Palazzo d’Estate 颐和园</dc:relation>
+    <dc:source>https://whc.unesco.org/en/list/1025/</dc:source>
+  </dc:description>
+  <dc:description rdf:about="../items/suzhou.html">
+    <dc:identifier>S05</dc:identifier>
+    <dc:title>Giardini classici di Suzhou 苏州古典园林</dc:title>
+    <dc:coverage>Suzhou, Jiangsu</dc:coverage>
+    <dc:subject>Città d’acqua e giardini; giardini classici; Patrimonio Mondiale UNESCO</dc:subject>
+    <dc:relation>Venezia e la sua Laguna</dc:relation>
+    <dc:source>https://whc.unesco.org/en/list/813/</dc:source>
+  </dc:description>
+  <dc:description rdf:about="../items/venezia.html">
+    <dc:identifier>S06</dc:identifier>
+    <dc:title>Venezia e la sua Laguna</dc:title>
+    <dc:coverage>Venezia, Veneto</dc:coverage>
+    <dc:subject>Città d’acqua e giardini; città lagunare / paesaggio culturale; Patrimonio Mondiale UNESCO</dc:subject>
+    <dc:relation>Giardini classici di Suzhou 苏州古典园林</dc:relation>
+    <dc:source>https://whc.unesco.org/en/list/394/</dc:source>
+  </dc:description>
+</rdf:RDF>
