@@ -245,3 +245,29 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
 }
 
 .context-actions{margin-top:16px;}
+
+
+/* Context illustration: immagine decorativa senza card aggiuntiva */
+.context-illustration {
+  margin: 10px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+.context-illustration-img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 620px !important;
+  height: auto !important;
+  max-height: 390px !important;
+  object-fit: contain !important;
+  margin: 0 auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
