@@ -98,3 +98,37 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
 .detailed-maps{margin-top:36px;}
 .detailed-maps .section-lead{margin-bottom:22px;}
 @media(max-width:850px){.real-heritage-map .svg-site text{font-size:28px}.real-heritage-map .svg-site:hover text,.real-heritage-map .svg-site:focus text{font-size:36px}}
+
+
+/* --- Mappa: cornice più compatta attorno alla carta eurasiatica --- */
+.real-map-shell {
+  padding: 0 !important;
+  background: #dfeff0 !important;
+  overflow: hidden !important;
+}
+
+.real-heritage-map {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  transform: translate(var(--mx, 0), var(--my, 0));
+  transition: transform .18s ease-out;
+}
+
+/* Sposta la carta verso l'alto: elimina il grande spazio azzurro superiore. */
+.real-heritage-map image {
+  transform: translateY(-72px);
+}
+
+/* Mantiene la didascalia nella fascia azzurra inferiore, ma più compatta. */
+.real-heritage-map .map-caption-svg {
+  transform: translateY(-52px);
+}
+
+@media (min-width: 769px) {
+  .real-map-shell {
+    max-height: 548px;
+  }
+}
+
