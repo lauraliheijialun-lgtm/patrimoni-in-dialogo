@@ -97,9 +97,9 @@ const I18N = {
     "Apri scheda item": "打开条目页面",
     "↑ Top": "↑ 顶部",
     "Cerca per nome, luogo, tema…": "按名称、地点、主题搜索……",
-    "Shudao 蜀道": "蜀道 Shudao",
-    "Palazzo d’Estate 颐和园": "颐和园 Palazzo d’Estate",
-    "Giardini classici di Suzhou 苏州古典园林": "苏州古典园林 Giardini classici di Suzhou",
+    "Shudao": "蜀道 Shudao",
+    "Palazzo d’Estate": "颐和园 Palazzo d’Estate",
+    "Giardini classici di Suzhou": "苏州古典园林 Giardini classici di Suzhou",
     "Venezia e la sua Laguna": "威尼斯及其潟湖 Venezia e la sua Laguna",
     "Via Appia. Regina Viarum": "阿皮亚古道 Via Appia",
     "Villa d’Este, Tivoli": "埃斯特别墅 Villa d’Este",
@@ -177,9 +177,9 @@ const I18N = {
     "Apri scheda item": "Open item record",
     "↑ Top": "↑ Top",
     "Cerca per nome, luogo, tema…": "Search by name, place, theme…",
-    "Shudao 蜀道": "Shudao 蜀道",
-    "Palazzo d’Estate 颐和园": "Summer Palace 颐和园",
-    "Giardini classici di Suzhou 苏州古典园林": "Classical Gardens of Suzhou 苏州古典园林",
+    "Shudao": "Shudao",
+    "Palazzo d’Estate": "Summer Palace",
+    "Giardini classici di Suzhou": "Classical Gardens of Suzhou",
     "Venezia e la sua Laguna": "Venice and its Lagoon",
     "Via Appia. Regina Viarum": "Via Appia. Regina Viarum",
     "Villa d’Este, Tivoli": "Villa d’Este, Tivoli",
@@ -743,12 +743,12 @@ Object.assign(I18N.zh, {
   "Italia": "意大利",
   "Patrimonio Mondiale UNESCO": "UNESCO 世界遗产",
   "Lista Tentativa UNESCO": "UNESCO 预备名单",
-  "Shudao 蜀道": "蜀道 Shudao",
+  "Shudao": "蜀道 Shudao",
   "Via Appia. Regina Viarum": "阿皮亚古道 Via Appia",
-  "Palazzo d’Estate 颐和园": "颐和园 Palazzo d’Estate",
+  "Palazzo d’Estate": "颐和园 Palazzo d’Estate",
   "Villa d’Este": "埃斯特别墅 Villa d’Este",
   "Villa d’Este, Tivoli": "埃斯特别墅 Villa d’Este",
-  "Giardini classici di Suzhou 苏州古典园林": "苏州古典园林",
+  "Giardini classici di Suzhou": "苏州古典园林",
   "Venezia e la sua Laguna": "威尼斯及其潟湖",
   "Sistema antico di vie montane tra Cina centrale e Sichuan": "连接中国中部与四川的古代山地道路系统"
 });
@@ -817,14 +817,71 @@ Object.assign(I18N.en, {
   "Italia": "Italy",
   "Patrimonio Mondiale UNESCO": "UNESCO World Heritage",
   "Lista Tentativa UNESCO": "UNESCO Tentative List",
-  "Shudao 蜀道": "Shudao 蜀道",
+  "Shudao": "Shudao",
   "Via Appia. Regina Viarum": "Via Appia. Regina Viarum",
-  "Palazzo d’Estate 颐和园": "Summer Palace 颐和园",
+  "Palazzo d’Estate": "Summer Palace",
   "Villa d’Este": "Villa d’Este",
   "Villa d’Este, Tivoli": "Villa d’Este, Tivoli",
-  "Giardini classici di Suzhou 苏州古典园林": "Classical Gardens of Suzhou 苏州古典园林",
+  "Giardini classici di Suzhou": "Classical Gardens of Suzhou",
   "Venezia e la sua Laguna": "Venice and its Lagoon",
   "Sistema antico di vie montane tra Cina centrale e Sichuan": "Ancient system of mountain routes between central China and Sichuan"
+});
+
+
+
+/* --- No Chinese characters in IT/EN display; Chinese names only in ZH mode --- */
+Object.assign(I18N.zh, {
+  "Shudao": "蜀道 Shudao",
+  "Via Appia. Regina Viarum": "阿皮亚古道 Via Appia",
+  "Palazzo d’Estate": "颐和园 Palazzo d’Estate",
+  "Villa d’Este": "埃斯特别墅 Villa d’Este",
+  "Villa d’Este, Tivoli": "埃斯特别墅 Villa d’Este",
+  "Giardini classici di Suzhou": "苏州古典园林",
+  "Venezia e la sua Laguna": "威尼斯及其潟湖",
+  "Apri item correlato: Via Appia. Regina Viarum": "打开相关条目：阿皮亚古道 Via Appia",
+  "Apri item correlato: Shudao": "打开相关条目：蜀道 Shudao",
+  "Apri item correlato: Villa d’Este": "打开相关条目：埃斯特别墅 Villa d’Este",
+  "Apri item correlato: Palazzo d’Estate": "打开相关条目：颐和园 Palazzo d’Estate",
+  "Apri item correlato: Venezia e la sua Laguna": "打开相关条目：威尼斯及其潟湖",
+  "Apri item correlato: Giardini classici di Suzhou": "打开相关条目：苏州古典园林",
+  "In relazione con:": "关联对象：",
+  "Sistema antico di vie montane tra Cina centrale e Sichuan": "连接中国中部与四川的古代山地道路系统",
+  "Giardino imperiale di Pechino e capolavoro del paesaggio cinese": "北京皇家园林与中国山水园林杰作",
+  "Sistema di giardini storici privati nella città di Suzhou": "苏州城中的历史私家园林体系",
+  "Città lagunare, sistema insulare e paesaggio culturale": "潟湖城市、岛屿系统与文化景观"
+});
+Object.assign(I18N.en, {
+  "Shudao": "Shudao",
+  "Via Appia. Regina Viarum": "Via Appia. Regina Viarum",
+  "Palazzo d’Estate": "Summer Palace",
+  "Villa d’Este": "Villa d’Este",
+  "Villa d’Este, Tivoli": "Villa d’Este, Tivoli",
+  "Giardini classici di Suzhou": "Classical Gardens of Suzhou",
+  "Venezia e la sua Laguna": "Venice and its Lagoon",
+  "Apri item correlato: Via Appia. Regina Viarum": "Open related item: Via Appia. Regina Viarum",
+  "Apri item correlato: Shudao": "Open related item: Shudao",
+  "Apri item correlato: Villa d’Este": "Open related item: Villa d’Este",
+  "Apri item correlato: Palazzo d’Estate": "Open related item: Summer Palace",
+  "Apri item correlato: Venezia e la sua Laguna": "Open related item: Venice and its Lagoon",
+  "Apri item correlato: Giardini classici di Suzhou": "Open related item: Classical Gardens of Suzhou",
+  "In relazione con:": "Related to:",
+  "Sistema antico di vie montane tra Cina centrale e Sichuan": "Ancient system of mountain routes between central China and Sichuan",
+  "Giardino imperiale di Pechino e capolavoro del paesaggio cinese": "Imperial garden of Beijing and masterpiece of Chinese landscape design",
+  "Sistema di giardini storici privati nella città di Suzhou": "System of historic private gardens in the city of Suzhou",
+  "Città lagunare, sistema insulare e paesaggio culturale": "Lagoon city, island system and cultural landscape"
+});
+
+
+
+/* --- Final zh name overrides after CJK cleanup --- */
+Object.assign(I18N.zh, {
+  "Shudao": "蜀道 Shudao",
+  "Palazzo d’Estate": "颐和园 Palazzo d’Estate",
+  "Giardini classici di Suzhou": "苏州古典园林",
+  "Venezia e la sua Laguna": "威尼斯及其潟湖",
+  "Via Appia. Regina Viarum": "阿皮亚古道 Via Appia",
+  "Villa d’Este": "埃斯特别墅 Villa d’Este",
+  "Villa d’Este, Tivoli": "埃斯特别墅 Villa d’Este"
 });
 
 function normalizeI18nKey(text) {
