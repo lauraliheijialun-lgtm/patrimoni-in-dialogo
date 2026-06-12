@@ -196,6 +196,10 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
 .slide-dots .dot.active{background:var(--teal);transform:scale(1.12);}
 .institutional-slideshow .slide-controls{top:35%;padding:0 12px;}
 .institutional-slideshow .slide-controls button{box-shadow:0 6px 18px rgba(30,45,47,.16);}
+ .context-media-column{display:grid;gap:18px;align-items:start;}
+.context-illustration{overflow:hidden;background:linear-gradient(180deg,#fffdf8 0%,#f8f4ea 100%);}
+.context-illustration .card-body{padding:18px;}
+.context-illustration-img{display:block;width:100%;height:auto;max-height:360px;object-fit:contain;margin:0 auto;}
 @media(max-width:980px){.context-layout{grid-template-columns:1fr;}.institutional-photo{height:320px;}}
 @media(max-width:850px){.milestone{grid-template-columns:1fr;gap:10px;}.milestone-year{width:max-content;}.institutional-photo{height:250px;}.institutional-slideshow .slide-caption h3{font-size:22px;}}
 
