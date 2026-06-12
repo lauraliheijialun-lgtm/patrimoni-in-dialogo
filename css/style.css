@@ -132,3 +132,12 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
   }
 }
 
+
+
+/* --- Allinea stelle, curve e etichette alla carta spostata verso l'alto --- */
+.real-heritage-map .pair-lines,
+.real-heritage-map .map-sites,
+.real-heritage-map .map-area-label {
+  transform: translateY(-72px);
+}
+
