@@ -93,51 +93,113 @@
 <script src="js/script.js"></script>
 <script>
 (function(){
-  const sites = {
-    S01:{name:'Shudao 蜀道', country:'Cina', type:'Lista Tentativa UNESCO', page:'items/shudao.html', period:'sistema storico sviluppato dall’epoca pre-Qin e consolidato nelle dinastie imperiali', keywords:['vie montane','soglia strategica','memoria del passaggio','paesaggio epico']},
-    S02:{name:'Via Appia. Regina Viarum', country:'Italia', type:'Patrimonio Mondiale UNESCO', page:'items/via-appia.html', period:'312 a.C., avvio della strada romana da Roma verso il Sud', keywords:['strada antica','pietra e potere','orizzonte romano','viaggio monumentale']},
-    S03:{name:'Palazzo d’Estate 颐和园', country:'Cina', type:'Patrimonio Mondiale UNESCO', page:'items/yiheyuan.html', period:'1750, giardino imperiale Qingyi Yuan; ricostruito e rinominato nel 1888', keywords:['lago e collina','giardino imperiale','paesaggio dipinto','armonia scenica']},
-    S04:{name:'Villa d’Este, Tivoli', country:'Italia', type:'Patrimonio Mondiale UNESCO', page:'items/villa-deste.html', period:'dal 1550, progetto rinascimentale voluto dal cardinale Ippolito II d’Este', keywords:['teatro d’acqua','giardino rinascimentale','fontane sonore','meraviglia scenografica']},
-    S05:{name:'Giardini classici di Suzhou 苏州古典园林', country:'Cina', type:'Patrimonio Mondiale UNESCO', page:'items/suzhou.html', period:'XI–XIX secolo, tradizione dei giardini privati letterati', keywords:['microcosmo poetico','rocce e acqua','ritiro letterario','paesaggio in miniatura']},
-    S06:{name:'Venezia e la sua Laguna', country:'Italia', type:'Patrimonio Mondiale UNESCO', page:'items/venezia.html', period:'formazione storica dal V secolo; pieno sviluppo urbano medievale e moderno', keywords:['città d’acqua','laguna vivente','luce veneziana','architettura riflessa']}
+  const sitesByLang = {
+    it: {
+      S01:{name:'Shudao 蜀道', country:'Cina', type:'Lista Tentativa UNESCO', page:'items/shudao.html', period:'sistema storico sviluppato dall’epoca pre-Qin e consolidato nelle dinastie imperiali', keywords:['vie montane','soglia strategica','memoria del passaggio','paesaggio epico']},
+      S02:{name:'Via Appia. Regina Viarum', country:'Italia', type:'Patrimonio Mondiale UNESCO', page:'items/via-appia.html', period:'312 a.C., avvio della strada romana da Roma verso il Sud', keywords:['strada antica','pietra e potere','orizzonte romano','viaggio monumentale']},
+      S03:{name:'Palazzo d’Estate 颐和园', country:'Cina', type:'Patrimonio Mondiale UNESCO', page:'items/yiheyuan.html', period:'1750, giardino imperiale Qingyi Yuan; ricostruito e rinominato nel 1888', keywords:['lago e collina','giardino imperiale','paesaggio dipinto','armonia scenica']},
+      S04:{name:'Villa d’Este, Tivoli', country:'Italia', type:'Patrimonio Mondiale UNESCO', page:'items/villa-deste.html', period:'dal 1550, progetto rinascimentale voluto dal cardinale Ippolito II d’Este', keywords:['teatro d’acqua','giardino rinascimentale','fontane sonore','meraviglia scenografica']},
+      S05:{name:'Giardini classici di Suzhou 苏州古典园林', country:'Cina', type:'Patrimonio Mondiale UNESCO', page:'items/suzhou.html', period:'XI–XIX secolo, tradizione dei giardini privati letterati', keywords:['microcosmo poetico','rocce e acqua','ritiro letterario','paesaggio in miniatura']},
+      S06:{name:'Venezia e la sua Laguna', country:'Italia', type:'Patrimonio Mondiale UNESCO', page:'items/venezia.html', period:'formazione storica dal V secolo; pieno sviluppo urbano medievale e moderno', keywords:['città d’acqua','laguna vivente','luce veneziana','architettura riflessa']}
+    },
+    zh: {
+      S01:{name:'蜀道 Shudao', country:'中国', type:'UNESCO 预备名单', page:'items/shudao.html', period:'自先秦时期发展、并在帝国王朝时期不断巩固的历史道路系统', keywords:['山地道路','战略通道','通行记忆','史诗性景观']},
+      S02:{name:'阿皮亚古道 Via Appia', country:'意大利', type:'UNESCO 世界遗产', page:'items/via-appia.html', period:'公元前312年开始修建，自罗马通向意大利南部的古罗马大道', keywords:['古代道路','石路与权力','罗马视野','纪念性旅行']},
+      S03:{name:'颐和园 Palazzo d’Estate', country:'中国', type:'UNESCO 世界遗产', page:'items/yiheyuan.html', period:'1750年建成清漪园，1888年重建并更名为颐和园', keywords:['湖山格局','皇家园林','如画景观','空间和谐']},
+      S04:{name:'埃斯特别墅 Villa d’Este', country:'意大利', type:'UNESCO 世界遗产', page:'items/villa-deste.html', period:'自1550年起，由红衣主教伊波利托二世·埃斯特推动建造的文艺复兴园林', keywords:['水的剧场','文艺复兴园林','音乐喷泉','奇观式景观']},
+      S05:{name:'苏州古典园林', country:'中国', type:'UNESCO 世界遗产', page:'items/suzhou.html', period:'11至19世纪形成并发展的中国文人私家园林传统', keywords:['诗意微缩宇宙','山石与水','文人隐逸','微缩景观']},
+      S06:{name:'威尼斯及其潟湖', country:'意大利', type:'UNESCO 世界遗产', page:'items/venezia.html', period:'自5世纪起形成，并在中世纪和近现代充分发展为城市体系', keywords:['水上城市','活态潟湖','威尼斯光影','倒映的建筑']}
+    },
+    en: {
+      S01:{name:'Shudao 蜀道', country:'China', type:'UNESCO Tentative List', page:'items/shudao.html', period:'a historical route system developed from the pre-Qin period and consolidated during the imperial dynasties', keywords:['mountain routes','strategic threshold','memory of passage','epic landscape']},
+      S02:{name:'Via Appia. Regina Viarum', country:'Italy', type:'UNESCO World Heritage', page:'items/via-appia.html', period:'312 BCE, the beginning of the Roman road from Rome towards southern Italy', keywords:['ancient road','stone and power','Roman horizon','monumental journey']},
+      S03:{name:'Summer Palace 颐和园', country:'China', type:'UNESCO World Heritage', page:'items/yiheyuan.html', period:'1750, imperial Qingyi Garden; rebuilt and renamed in 1888', keywords:['lake and hill','imperial garden','painted landscape','scenic harmony']},
+      S04:{name:'Villa d’Este, Tivoli', country:'Italy', type:'UNESCO World Heritage', page:'items/villa-deste.html', period:'from 1550, a Renaissance garden commissioned by Cardinal Ippolito II d’Este', keywords:['theatre of water','Renaissance garden','musical fountains','scenic wonder']},
+      S05:{name:'Classical Gardens of Suzhou 苏州古典园林', country:'China', type:'UNESCO World Heritage', page:'items/suzhou.html', period:'11th–19th centuries, tradition of private literati gardens', keywords:['poetic microcosm','rocks and water','literati retreat','miniature landscape']},
+      S06:{name:'Venice and its Lagoon', country:'Italy', type:'UNESCO World Heritage', page:'items/venezia.html', period:'historical formation from the 5th century, with full urban development in the medieval and modern periods', keywords:['water city','living lagoon','Venetian light','reflected architecture']}
+    }
   };
-  const shell = document.getElementById('svgMapShell');
+  function currentMapLang(){ const lang = localStorage.getItem('preferredLanguage') || document.documentElement.getAttribute('lang') || 'it'; return lang.startsWith('zh') ? 'zh' : (lang.startsWith('en') ? 'en' : 'it'); }
+  function getSite(id){ const lang = currentMapLang(); return (sitesByLang[lang] && sitesByLang[lang][id]) || sitesByLang.it[id]; }
+
+    const shell = document.getElementById('svgMapShell');
   const floating = document.getElementById('floatingCard');
   const info = document.getElementById('mapInfoCard');
   const infoContent = info.querySelector('.map-info-content');
   const closeBtn = info.querySelector('.map-info-close');
   function cardHTML(site){ return `<strong>${site.name}</strong><span>${site.country} · ${site.type}</span><em>${site.period}</em><p>${site.keywords.join(' · ')}</p>`; }
-  function infoHTML(site){ return `<h3>${site.name}</h3><p><strong>Paese:</strong> ${site.country}</p><p><strong>Periodo storico:</strong> ${site.period}</p><p><strong>Parole chiave:</strong> ${site.keywords.join(' · ')}</p><a class="btn light" href="${site.page}">Apri scheda item</a>`; }
+  function infoHTML(site){
+    const lang = currentMapLang();
+    const labels = {
+      it:{country:'Paese', period:'Periodo storico', keywords:'Parole chiave', open:'Apri scheda item'},
+      zh:{country:'国家', period:'历史时期', keywords:'关键词', open:'打开条目页面'},
+      en:{country:'Country', period:'Historical period', keywords:'Keywords', open:'Open item record'}
+    }[lang] || {country:'Paese', period:'Periodo storico', keywords:'Parole chiave', open:'Apri scheda item'};
+    return `<h3>${site.name}</h3><p><strong>${labels.country}:</strong> ${site.country}</p><p><strong>${labels.period}:</strong> ${site.period}</p><p><strong>${labels.keywords}:</strong> ${site.keywords.join(' · ')}</p><a class="btn light" href="${site.page}">${labels.open}</a>`;
+  }
   function moveFloating(e){ const x = e.clientX + 18, y = e.clientY + 18; floating.style.left = Math.min(x, window.innerWidth - 330) + 'px'; floating.style.top = Math.min(y, window.innerHeight - 185) + 'px'; }
   function showFloating(site,e){ floating.innerHTML = cardHTML(site); floating.classList.add('visible'); moveFloating(e); }
   function hideFloating(){ floating.classList.remove('visible'); }
   function selectSite(site){ infoContent.innerHTML = infoHTML(site); info.classList.add('visible'); }
   document.querySelectorAll('.svg-site').forEach(el => {
-    const site = sites[el.dataset.id];
-    el.addEventListener('mouseenter', e => showFloating(site,e));
+    const siteId = el.dataset.id;
+    el.addEventListener('mouseenter', e => showFloating(getSite(siteId),e));
     el.addEventListener('mousemove', moveFloating);
     el.addEventListener('mouseleave', hideFloating);
-    el.addEventListener('click', () => selectSite(site));
-    el.addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' '){ e.preventDefault(); selectSite(site); } });
+    el.addEventListener('click', () => selectSite(getSite(siteId)));
+    el.addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' '){ e.preventDefault(); selectSite(getSite(siteId)); } });
   });
-  const pairInfo = {
-    'Shudao ↔ Via Appia': {
-      title: 'Shudao 蜀道 ↔ Via Appia',
-      html: `<p><strong>Distanza approssimativa:</strong> circa 7.916 km in linea d'aria.</p><p>Questa coppia mette in dialogo due <strong>vie storiche</strong>: la Shudao come sistema di strade montane e passi strategici della Cina occidentale, e la Via Appia come grande asse viario del mondo romano.</p><p><strong>Parole chiave:</strong> mobilità, ingegneria, attraversamento, commercio, memoria del viaggio.</p>`
+  const pairInfoByLang = {
+    it: {
+      'Shudao ↔ Via Appia': {
+        title: 'Shudao 蜀道 ↔ Via Appia',
+        html: `<p><strong>Distanza approssimativa:</strong> circa 7.916 km in linea d'aria.</p><p>Questa coppia mette in dialogo due <strong>vie storiche</strong>: la Shudao come sistema di strade montane e passi strategici della Cina occidentale, e la Via Appia come grande asse viario del mondo romano.</p><p><strong>Parole chiave:</strong> mobilità, ingegneria, attraversamento, commercio, memoria del viaggio.</p>`
+      },
+      'Palazzo d’Estate ↔ Villa d’Este': {
+        title: 'Palazzo d’Estate 颐和园 ↔ Villa d’Este',
+        html: `<p><strong>Distanza approssimativa:</strong> circa 8.086 km in linea d'aria.</p><p>Questa coppia valorizza due <strong>paesaggi di giardino e d'acqua</strong>, nei quali l'arte del paesaggio costruisce una rappresentazione del potere, della contemplazione e della regia visiva della natura.</p><p><strong>Parole chiave:</strong> acqua, scenografia, giardino, armonia, prestigio dinastico.</p>`
+      },
+      'Giardini di Suzhou ↔ Venezia': {
+        title: 'Giardini classici di Suzhou 苏州古典园林 ↔ Venezia e la sua Laguna',
+        html: `<p><strong>Distanza approssimativa:</strong> circa 8.841 km in linea d'aria.</p><p>Questa coppia accosta due <strong>culture urbane dell'acqua</strong>: Suzhou con i suoi canali, ponti e giardini privati, e Venezia con la laguna, la rete d'acqua e l'immaginario della città anfibia.</p><p><strong>Parole chiave:</strong> canali, città d'acqua, eleganza, paesaggio urbano, vita sull'acqua.</p>`
+      }
     },
-    'Palazzo d’Estate ↔ Villa d’Este': {
-      title: 'Palazzo d’Estate 颐和园 ↔ Villa d’Este',
-      html: `<p><strong>Distanza approssimativa:</strong> circa 8.086 km in linea d'aria.</p><p>Questa coppia valorizza due <strong>paesaggi di giardino e d'acqua</strong>, nei quali l'arte del paesaggio costruisce una rappresentazione del potere, della contemplazione e della regia visiva della natura.</p><p><strong>Parole chiave:</strong> acqua, scenografia, giardino, armonia, prestigio dinastico.</p>`
+    zh: {
+      'Shudao ↔ Via Appia': {
+        title: '蜀道 ↔ 阿皮亚古道',
+        html: `<p><strong>直线距离约：</strong>7,916 公里。</p><p>这组关系将两条<strong>历史道路</strong>放入对话：蜀道作为中国西部山地道路与战略关隘系统，阿皮亚古道作为古罗马世界的重要道路轴线。</p><p><strong>关键词：</strong>移动性、工程、穿越、贸易、旅行记忆。</p>`
+      },
+      'Palazzo d’Estate ↔ Villa d’Este': {
+        title: '颐和园 ↔ 埃斯特别墅',
+        html: `<p><strong>直线距离约：</strong>8,086 公里。</p><p>这组关系强调两处<strong>园林与水景</strong>：园林艺术如何建构权力、观赏、自然与空间秩序的表达。</p><p><strong>关键词：</strong>水、景观剧场、园林、和谐、王朝/贵族威望。</p>`
+      },
+      'Giardini di Suzhou ↔ Venezia': {
+        title: '苏州古典园林 ↔ 威尼斯及其潟湖',
+        html: `<p><strong>直线距离约：</strong>8,841 公里。</p><p>这组关系连接两种<strong>水上城市文化</strong>：苏州的运河、桥梁与私家园林，和威尼斯的潟湖、水网与“水城”想象。</p><p><strong>关键词：</strong>运河、水城、优雅、城市景观、水上生活。</p>`
+      }
     },
-    'Giardini di Suzhou ↔ Venezia': {
-      title: 'Giardini classici di Suzhou 苏州古典园林 ↔ Venezia e la sua Laguna',
-      html: `<p><strong>Distanza approssimativa:</strong> circa 8.841 km in linea d'aria.</p><p>Questa coppia accosta due <strong>culture urbane dell'acqua</strong>: Suzhou con i suoi canali, ponti e giardini privati, e Venezia con la laguna, la rete d'acqua e l'immaginario della città anfibia.</p><p><strong>Parole chiave:</strong> canali, città d'acqua, eleganza, paesaggio urbano, vita sull'acqua.</p>`
+    en: {
+      'Shudao ↔ Via Appia': {
+        title: 'Shudao 蜀道 ↔ Via Appia',
+        html: `<p><strong>Approximate distance:</strong> about 7,916 km in a straight line.</p><p>This pair places two <strong>historic routes</strong> in dialogue: Shudao as a system of mountain roads and strategic passes in western China, and Via Appia as a major road axis of the Roman world.</p><p><strong>Keywords:</strong> mobility, engineering, crossing, trade, memory of travel.</p>`
+      },
+      'Palazzo d’Estate ↔ Villa d’Este': {
+        title: 'Summer Palace 颐和园 ↔ Villa d’Este',
+        html: `<p><strong>Approximate distance:</strong> about 8,086 km in a straight line.</p><p>This pair highlights two <strong>garden-and-water landscapes</strong>, where landscape art stages power, contemplation, nature and spatial order.</p><p><strong>Keywords:</strong> water, scenography, garden, harmony, dynastic and aristocratic prestige.</p>`
+      },
+      'Giardini di Suzhou ↔ Venezia': {
+        title: 'Classical Gardens of Suzhou 苏州古典园林 ↔ Venice and its Lagoon',
+        html: `<p><strong>Approximate distance:</strong> about 8,841 km in a straight line.</p><p>This pair connects two <strong>urban water cultures</strong>: Suzhou with its canals, bridges and private gardens, and Venice with its lagoon, water network and water-city imaginary.</p><p><strong>Keywords:</strong> canals, water city, elegance, urban landscape, life on water.</p>`
+      }
     }
   };
-  document.querySelectorAll('.pair-curve').forEach(curve => {
+  function getPairInfo(pairKey){ const lang = currentMapLang(); return (pairInfoByLang[lang] && pairInfoByLang[lang][pairKey]) || pairInfoByLang.it[pairKey]; }
+
+    document.querySelectorAll('.pair-curve').forEach(curve => {
     curve.addEventListener('click', () => {
-      const pair = pairInfo[curve.dataset.pair];
-      infoContent.innerHTML = pair ? `<h3>${pair.title}</h3>${pair.html}` : `<h3>${curve.dataset.pair}</h3><p>Relazione di gemellaggio tra due patrimoni del progetto.</p>`;
+      const pair = getPairInfo(curve.dataset.pair);
+      const fallback = currentMapLang()==='zh' ? '两处项目遗产之间的结好关系。' : (currentMapLang()==='en' ? 'Twinning relation between two heritage items in the project.' : 'Relazione di gemellaggio tra due patrimoni del progetto.');
+      infoContent.innerHTML = pair ? `<h3>${pair.title}</h3>${pair.html}` : `<h3>${curve.dataset.pair}</h3><p>${fallback}</p>`;
       info.classList.add('visible');
     });
   });
