@@ -296,3 +296,14 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
 .real-heritage-map .map-caption-svg{
   transform:none !important;
 }
+
+
+/* --- Bilanciamento finale delle fasce azzurre nella mappa eurasiatica --- */
+.real-map-shell{
+  padding:18px 0 !important;
+  overflow:hidden !important;
+}
+.real-heritage-map{
+  margin:0 0 -72px 0 !important;
+  display:block !important;
+}
