@@ -64,3 +64,37 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
 .popup-card h3{margin:0 0 8px;font-size:20px;line-height:1.2;}.popup-card p{margin:6px 0;}.leaflet-popup-content{font-family:Arial,sans-serif;line-height:1.45;}.leaflet-popup-content .btn{padding:7px 10px;font-size:12px;margin-top:4px;}
 .map-help{margin:11px 2px 0;}.pair-summary{margin-top:32px;}.pair-card{border-top:5px solid var(--gold);}
 @media(max-width:850px){.map-panel-head{flex-direction:column}.map-legend{justify-content:flex-start;min-width:0}.heritage-map{height:520px}.floating-map-card{display:none}.interactive-map-section{padding:12px}}
+
+/* Versione corretta della mappa: SVG locale, fluida, completa e senza tasselli esterni. */
+.fast-map-section .heritage-map{display:none;}
+.svg-map-shell{position:relative;width:100%;border-radius:18px;border:1px solid var(--line);overflow:hidden;background:#e8f0ef;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7);}
+.svg-heritage-map{display:block;width:100%;height:auto;min-height:480px;transform:translate(var(--mx,0),var(--my,0));transition:transform .08s linear;}
+.map-grid path{stroke:#c4d5d1;stroke-width:1;fill:none;}
+.continent-shapes path{stroke:#c9bda9;stroke-width:1;}
+.map-area-label{font-family:Georgia,'Times New Roman',serif;font-weight:bold;font-size:34px;}
+.italy-label{fill:var(--red);}.china-label{fill:var(--teal);}
+.map-caption-svg{font-family:Arial,sans-serif;font-size:13px;fill:#687b7c;text-anchor:middle;}
+.pair-curve{fill:none;stroke:var(--gold);stroke-width:4;stroke-dasharray:8 7;stroke-linecap:round;opacity:.86;cursor:pointer;transition:stroke-width .15s ease,opacity .15s ease;}
+.pair-curve:hover{stroke-width:6;opacity:1;}
+.svg-site{cursor:pointer;outline:none;}
+.svg-site text{font-family:Arial,sans-serif;font-size:31px;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:#fffdfa;stroke-width:4px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.28));transition:font-size .15s ease,filter .15s ease;}
+.svg-site.china text{fill:var(--teal);}.svg-site.italy text{fill:var(--red);}
+.svg-site:hover text,.svg-site:focus text{font-size:42px;filter:drop-shadow(0 6px 9px rgba(0,0,0,.35));}
+.map-info-card{position:absolute;right:18px;bottom:18px;width:min(365px,calc(100% - 36px));background:rgba(255,253,248,.98);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:18px;box-shadow:var(--shadow);padding:18px;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .16s ease,transform .16s ease;}
+.map-info-card.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+.map-info-card h3{margin:0 34px 10px 0;line-height:1.2;}
+.map-info-card p{margin:7px 0;}
+.map-info-close{position:absolute;right:12px;top:10px;border:0;background:#f3efe7;border-radius:50%;width:30px;height:30px;font-size:20px;cursor:pointer;color:var(--muted);}
+.map-info-close:hover{background:#e8f0ef;color:var(--ink);}
+@media(max-width:850px){.svg-heritage-map{min-height:360px}.map-area-label{font-size:28px}.map-info-card{position:relative;right:auto;bottom:auto;width:auto;margin:12px;opacity:1;transform:none;display:none}.map-info-card.visible{display:block}.svg-site text{font-size:27px}.svg-site:hover text,.svg-site:focus text{font-size:34px}}
+
+/* Mappa eurasiatica corretta: base cartografica locale + overlay interattivo. */
+.real-map-shell{background:#dcebed;}
+.real-heritage-map image{filter:saturate(.92) contrast(1.03);}
+.real-heritage-map .pair-curve{stroke:#b8893b;stroke-width:4.2;stroke-dasharray:9 7;stroke-linecap:round;opacity:.92;}
+.real-heritage-map .pair-curve:hover{stroke-width:6;opacity:1;}
+.real-heritage-map .svg-site text{font-size:34px;stroke:#fffdfa;stroke-width:4.5px;paint-order:stroke;}
+.real-heritage-map .svg-site:hover text,.real-heritage-map .svg-site:focus text{font-size:45px;}
+.detailed-maps{margin-top:36px;}
+.detailed-maps .section-lead{margin-bottom:22px;}
+@media(max-width:850px){.real-heritage-map .svg-site text{font-size:28px}.real-heritage-map .svg-site:hover text,.real-heritage-map .svg-site:focus text{font-size:36px}}
