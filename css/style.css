@@ -141,3 +141,16 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
   transform: translateY(-72px);
 }
 
+
+
+/* --- Riduce ulteriormente la fascia azzurra inferiore sotto la carta --- */
+.real-heritage-map .map-caption-svg {
+  transform: translateY(-96px) !important;
+}
+
+@media (min-width: 769px) {
+  .real-map-shell {
+    max-height: 500px !important;
+  }
+}
+
