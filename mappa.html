@@ -14,7 +14,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Salta al contenuto</a>
-<header class="topbar"><nav class="nav" aria-label="Navigazione principale"><a class="brand" href="index.html"><span class="brand-mark">◌</span><span>Patrimoni in Dialogo<span class="brand-sub">Rete digitale Cina–Italia</span></span></a><button class="menu-toggle" onclick="toggleMenu()">Menu</button><div class="navlinks"><a href="index.html">Home</a><a href="catalogo.html">Catalogo</a><a href="mappa.html" class="active">Mappa</a><a href="timeline.html">Timeline</a><a href="dati.html">Dati</a><a href="componenti.html">Componenti</a><div class="dropdown"><button class="dropbtn">Item ▾</button><div class="dropdown-content"><a href="items/shudao.html">Shudao 蜀道</a><a href="items/via-appia.html">Via Appia. Regina Viarum</a><a href="items/yiheyuan.html">Palazzo d’Estate 颐和园</a><a href="items/villa-deste.html">Villa d’Este, Tivoli</a><a href="items/suzhou.html">Giardini classici di Suzhou 苏州古典园林</a><a href="items/venezia.html">Venezia e la sua Laguna</a></div></div></div></nav></header>
+<header class="topbar"><nav class="nav" aria-label="Navigazione principale"><a class="brand" href="index.html"><span class="brand-mark">◌</span><span>Patrimoni in Dialogo<span class="brand-sub">Rete digitale Cina–Italia</span></span></a><button class="menu-toggle" onclick="toggleMenu()">Menu</button><div class="navlinks"><a href="index.html">Home</a><div class="dropdown catalogo-dropdown"><a class="dropbtn catalogo-dropbtn" href="catalogo.html">Catalogo ▾</a><div class="dropdown-content"><a href="items/shudao.html">Shudao 蜀道</a><a href="items/via-appia.html">Via Appia. Regina Viarum</a><a href="items/yiheyuan.html">Palazzo d’Estate 颐和园</a><a href="items/villa-deste.html">Villa d’Este, Tivoli</a><a href="items/suzhou.html">Giardini classici di Suzhou 苏州古典园林</a><a href="items/venezia.html">Venezia e la sua Laguna</a></div></div><a href="mappa.html" class="active">Mappa</a><a href="timeline.html">Timeline</a><a href="dati.html">Dati</a><a href="componenti.html">Componenti</a></nav></header>
 <main id="main" class="container">
   <div class="breadcrumb"><a href="index.html">Home</a> / Mappa</div>
   <h1 class="section-title">Navigazione spaziale interattiva</h1>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="svg-map-shell real-map-shell" id="svgMapShell">
-      <svg id="heritageSvgMap" class="svg-heritage-map real-heritage-map" viewBox="0 205 1000 305" role="img" aria-label="Mappa interattiva eurasiatica dei patrimoni gemellati tra Cina e Italia">
+      <svg id="heritageSvgMap" class="svg-heritage-map real-heritage-map" viewBox="0 0 1000 560" role="img" aria-label="Mappa interattiva eurasiatica dei patrimoni gemellati tra Cina e Italia">
         <defs>
           <filter id="starShadow" x="-40%" y="-40%" width="180%" height="180%">
             <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.32"/>
@@ -42,12 +42,12 @@
         </defs>
         <image href="img/eurasia-reference-map.png" x="0" y="0" width="1000" height="560" preserveAspectRatio="xMidYMid slice"></image>
         <rect x="0" y="0" width="1000" height="560" fill="rgba(255,253,248,0.03)"/>
-        <g class="pair-lines" transform="translate(0 122)">
+        <g class="pair-lines">
           <path class="pair-curve" data-pair="Shudao ↔ Via Appia" d="M800 348 C650 150, 380 155, 190 249"/>
           <path class="pair-curve" data-pair="Palazzo d’Estate ↔ Villa d’Este" d="M868 286 C690 122, 400 132, 199 260"/>
           <path class="pair-curve" data-pair="Giardini di Suzhou ↔ Venezia" d="M902 345 C700 132, 410 98, 183 236"/>
         </g>
-        <g class="map-sites" transform="translate(0 122)">
+        <g class="map-sites">
           <g class="svg-site china" tabindex="0" role="button" aria-label="Shudao 蜀道" data-id="S01" transform="translate(800 348)"><text filter="url(#starShadow)">★</text></g>
           <g class="svg-site italy" tabindex="0" role="button" aria-label="Via Appia. Regina Viarum" data-id="S02" transform="translate(190 249)"><text filter="url(#starShadow)">★</text></g>
           <g class="svg-site china" tabindex="0" role="button" aria-label="Palazzo d’Estate 颐和园" data-id="S03" transform="translate(868 286)"><text filter="url(#starShadow)">★</text></g>

@@ -273,37 +273,23 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
 
 
 
-/* --- Mappa eurasiatica: fasce azzurre superiori/inferiori piccole e simmetriche --- */
-.real-map-shell{
-  padding:18px 0 !important;
-  background:#dcebed !important;
-  overflow:hidden !important;
-  max-height:none !important;
-}
-.real-heritage-map{
-  display:block !important;
-  width:100% !important;
-  height:auto !important;
-  min-height:0 !important;
-  margin:0 !important;
-  transform:translate(var(--mx,0),var(--my,0)) !important;
-  transition:transform .12s linear !important;
-}
-.real-heritage-map image,
-.real-heritage-map .pair-lines,
-.real-heritage-map .map-sites,
-.real-heritage-map .map-area-label,
-.real-heritage-map .map-caption-svg{
-  transform:none !important;
+/* Catalogo dropdown nella navbar */
+.catalogo-dropdown {
+  position: relative;
 }
 
-
-/* --- Bilanciamento finale delle fasce azzurre nella mappa eurasiatica --- */
-.real-map-shell{
-  padding:18px 0 !important;
-  overflow:hidden !important;
+.catalogo-dropbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
 }
-.real-heritage-map{
-  margin:0 0 -72px 0 !important;
-  display:block !important;
+
+.catalogo-dropdown .dropdown-content {
+  min-width: 280px;
+}
+
+.catalogo-dropdown:hover .dropdown-content,
+.catalogo-dropdown:focus-within .dropdown-content {
+  display: block;
 }
