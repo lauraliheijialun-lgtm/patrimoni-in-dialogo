@@ -93,8 +93,8 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
 .real-heritage-map image{filter:saturate(.92) contrast(1.03);}
 .real-heritage-map .pair-curve{stroke:#b8893b;stroke-width:4.2;stroke-dasharray:9 7;stroke-linecap:round;opacity:.92;}
 .real-heritage-map .pair-curve:hover{stroke-width:6;opacity:1;}
-.real-heritage-map .svg-site text{font-size:34px;stroke:#fffdfa;stroke-width:4.5px;paint-order:stroke;}
-.real-heritage-map .svg-site:hover text,.real-heritage-map .svg-site:focus text{font-size:45px;}
+.real-heritage-map .svg-site text{font-size:30px;stroke:#fffdfa;stroke-width:4.2px;paint-order:stroke;}
+.real-heritage-map .svg-site:hover text,.real-heritage-map .svg-site:focus text{font-size:39px;}
 .detailed-maps{margin-top:36px;}
 .detailed-maps .section-lead{margin-bottom:22px;}
 @media(max-width:850px){.real-heritage-map .svg-site text{font-size:28px}.real-heritage-map .svg-site:hover text,.real-heritage-map .svg-site:focus text{font-size:36px}}
