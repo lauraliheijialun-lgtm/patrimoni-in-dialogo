@@ -1,3 +1,2 @@
 Versione con selettore trilingue IT / 中文 / EN.
-La lingua scelta viene salvata in localStorage.
-La traduzione riguarda interfaccia, navigazione, titoli e testi principali del progetto.
+Questa versione estende la traduzione a tutte le principali pagine, ai testi lunghi e alle sei schede item.
