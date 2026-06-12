@@ -154,3 +154,16 @@ a{color:var(--teal-dark);text-decoration:none}a:hover{text-decoration:underline}
   }
 }
 
+
+
+/* --- Ulteriore riduzione della fascia azzurra inferiore --- */
+.real-heritage-map .map-caption-svg {
+  transform: translateY(-108px) !important;
+}
+
+@media (min-width: 769px) {
+  .real-map-shell {
+    max-height: 460px !important;
+  }
+}
+
