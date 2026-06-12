@@ -9,4 +9,20 @@ function filterTable(){const q=(document.getElementById('tableSearch')?.value||'
 let slideIndex=0;function showSlide(n){const slides=document.querySelectorAll('.institutional-slideshow .slide');const dots=document.querySelectorAll('.institutional-slideshow .dot');if(!slides.length)return;slideIndex=(n+slides.length)%slides.length;slides.forEach(s=>s.classList.remove('active'));dots.forEach(d=>d.classList.remove('active'));slides[slideIndex].classList.add('active');if(dots[slideIndex])dots[slideIndex].classList.add('active')}function nextSlide(delta){showSlide(slideIndex+delta)}
 function setupBackTop(){const b=document.querySelector('.backtop');if(!b)return;window.addEventListener('scroll',()=>{b.style.display=window.scrollY>600?'inline-flex':'none'})}
 function announcePoint(name){const box=document.getElementById('mapInfo'); if(box) box.innerHTML='<strong>'+name+'</strong><br>Questo punto mostra la posizione approssimativa nel progetto. Apri la scheda item o la mappa OSM per il dettaglio.'}
-window.addEventListener('DOMContentLoaded',()=>{setupAccordions();setupBackTop();showSlide(0)})
+window.addEventListener('DOMContentLoaded',()=>{
+  setupAccordions();
+  setupBackTop();
+  showSlide(0);
+
+  const slideshow = document.querySelector('.institutional-slideshow');
+  const slides = document.querySelectorAll('.institutional-slideshow .slide');
+  if (slideshow && slides.length > 1) {
+    let autoSlideTimer = setInterval(()=>nextSlide(1), 5000);
+
+    // Pausa al passaggio del mouse, così l'utente può leggere la card.
+    slideshow.addEventListener('mouseenter', ()=>clearInterval(autoSlideTimer));
+    slideshow.addEventListener('mouseleave', ()=>{
+      autoSlideTimer = setInterval(()=>nextSlide(1), 5000);
+    });
+  }
+})
