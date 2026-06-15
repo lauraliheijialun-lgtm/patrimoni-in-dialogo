@@ -1,273 +1,585 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timeline della collezione | Patrimoni in Dialogo</title>
-  <meta name="description" content="Cronologia temporale della collezione Patrimoni in Dialogo">
-  <meta name="DC.title" content="Timeline della collezione | Patrimoni in Dialogo">
-  <meta name="DC.creator" content="Yalun Li">
-  <meta name="DC.subject" content="Digital Humanities; Patrimonio culturale; Timeline; UNESCO; Cina; Italia; Gemellaggi">
-  <meta name="DC.description" content="Navigazione temporale tra iscrizioni UNESCO, gemellaggi, forum culturali, fonti istituzionali ed eventi collegati alla collezione">
-  <meta name="DC.language" content="it">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-<a class="skip-link" href="#main">Salta al contenuto</a>
-<header class="topbar">
-  <nav class="nav" aria-label="Navigazione principale">
-    <a class="brand" href="index.html"><span class="brand-mark">◌</span><span>Patrimoni in Dialogo<span class="brand-sub">Rete digitale Cina–Italia</span></span></a>
-    <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
-    <div class="navlinks"><a href="index.html">Home</a><div class="dropdown catalogo-dropdown"><a class="dropbtn catalogo-dropbtn" href="catalogo.html">Catalogo ▾</a><div class="dropdown-content"><a href="items/shudao.html">Shudao</a><a href="items/via-appia.html">Via Appia. Regina Viarum</a><a href="items/yiheyuan.html">Palazzo d’Estate</a><a href="items/villa-deste.html">Villa d’Este, Tivoli</a><a href="items/suzhou.html">Giardini classici di Suzhou</a><a href="items/venezia.html">Venezia e la sua Laguna</a></div></div><a href="mappa.html">Mappa</a><a href="timeline.html" class="active">Timeline</a><a href="dati.html">Dati</a><a href="componenti.html">Componenti</a>
-  </nav>
-</header>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<main id="main" class="container timeline-page">
-  <div class="breadcrumb"><a href="index.html">Home</a> / Timeline</div>
+    <title>Timeline della collezione | Patrimoni in Dialogo</title>
 
-  <section class="timeline-hero card">
-    <div class="card-body">
-      <div class="eyebrow-section">Accesso temporale alla collezione</div>
-      <h1 class="section-title">Cronologia della rete patrimoniale</h1>
-      <p class="section-lead">
-        Questa pagina non raccoglie semplicemente notizie: propone una navigazione temporale integrata tra iscrizioni UNESCO,
-        gemellaggi, forum culturali, fonti istituzionali ed eventi collegati. I nodi sono ordinati cronologicamente e collegano
-        i sei item principali alle relazioni interpretative del progetto.
-      </p>
-      <div class="timeline-legend">
-        <span><i class="legend-dot tag-heritage"></i> Heritage / UNESCO</span>
-        <span><i class="legend-dot tag-relation"></i> Gemellaggio / relazione</span>
-        <span><i class="legend-dot tag-forum"></i> Forum / istituzioni</span>
-        <span><i class="legend-dot tag-event"></i> Evento / fonte</span>
+    <meta name="description" content="Cronologia temporale della collezione Patrimoni in Dialogo">
+    <meta name="DC.title" content="Timeline della collezione | Patrimoni in Dialogo">
+    <meta name="DC.creator" content="Yalun Li">
+    <meta name="DC.subject" content="Digital Humanities; Patrimonio culturale; Timeline; UNESCO; Cina; Italia; Gemellaggi">
+    <meta name="DC.description" content="Navigazione temporale tra iscrizioni UNESCO, gemellaggi, forum culturali, fonti istituzionali ed eventi collegati alla collezione">
+    <meta name="DC.language" content="it">
+
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Salta al contenuto</a>
+
+    <header class="topbar">
+      <nav class="nav" aria-label="Navigazione principale">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">◌</span>
+          <span>
+            Patrimoni in Dialogo
+            <span class="brand-sub">Rete digitale Cina–Italia</span>
+          </span>
+        </a>
+
+        <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+
+        <div class="navlinks">
+          <a href="index.html">Home</a>
+
+          <div class="dropdown catalogo-dropdown">
+            <a class="dropbtn catalogo-dropbtn" href="catalogo.html">Catalogo ▾</a>
+
+            <div class="dropdown-content">
+              <a href="items/shudao.html">Shudao</a>
+              <a href="items/via-appia.html">Via Appia. Regina Viarum</a>
+              <a href="items/yiheyuan.html">Palazzo d’Estate</a>
+              <a href="items/villa-deste.html">Villa d’Este, Tivoli</a>
+              <a href="items/suzhou.html">Giardini classici di Suzhou</a>
+              <a href="items/venezia.html">Venezia e la sua Laguna</a>
+            </div>
+          </div>
+
+          <a href="mappa.html">Mappa</a>
+          <a href="timeline.html" class="active">Timeline</a>
+          <a href="dati.html">Dati</a>
+          <a href="componenti.html">Componenti</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" class="container timeline-page">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / Timeline
       </div>
-    </div>
-  </section>
 
-  <section class="timeline-method card">
-    <div class="card-body">
-      <h2>Come leggere la timeline</h2>
-      <p>
-        La timeline funziona come un secondo metodo di accesso alla collezione, accanto al catalogo e alla mappa.
-        Ogni nodo indica un momento rilevante per capire come i patrimoni, le fonti e le relazioni Cina–Italia entrano
-        nella struttura digitale del sito.
-      </p>
-      <a class="btn light" href="catalogo.html">Vedi il catalogo</a>
-      <a class="btn light" href="mappa.html">Vedi la mappa</a>
-      <a class="btn light" href="dati.html">Vedi i dati</a>
-    </div>
-  </section>
-
-  <section class="chrono" aria-label="Timeline integrata della collezione">
-    <article class="chrono-item relation-node">
-      <div class="chrono-date">1980</div>
-      <div class="chrono-content card">
+      <section class="timeline-hero card">
         <div class="card-body">
-          <div class="timeline-tags"><span class="tag red">Gemellaggio civico</span><span class="tag">Fonte istituzionale</span></div>
-          <h2>Venezia e Suzhou stabiliscono un rapporto di gemellaggio</h2>
-          <p>Il rapporto tra Venezia e Suzhou offre una base storica alla coppia interpretativa “città d’acqua”: due spazi urbani segnati da canali, ponti, mobilità acquea e immaginari lagunari.</p>
-          <p class="linked-items"><strong>Relazione:</strong> Giardini classici di Suzhou ↔ Venezia e la sua Laguna</p>
-          <div class="node-actions">
-            <a class="btn light" href="items/suzhou.html">Suzhou</a>
-            <a class="btn light" href="items/venezia.html">Venezia</a>
-            <a class="source-link" href="https://www.comune.venezia.it/it/content/suzhou-gemellaggi-gemellaggi-e-accordi-venezia-mondo" target="_blank" rel="noopener">Fonte: Comune di Venezia</a>
+          <div class="eyebrow-section">Accesso temporale alla collezione</div>
+
+          <h1 class="section-title">Cronologia della rete patrimoniale</h1>
+
+          <div class="timeline-legend">
+            <span>
+              <i class="legend-dot tag-heritage"></i>
+              Heritage / UNESCO
+            </span>
+
+            <span>
+              <i class="legend-dot tag-relation"></i>
+              Gemellaggio / relazione
+            </span>
+
+            <span>
+              <i class="legend-dot tag-forum"></i>
+              Forum / istituzioni
+            </span>
+
+            <span>
+              <i class="legend-dot tag-event"></i>
+              Evento / fonte
+            </span>
           </div>
         </div>
-      </div>
-    </article>
+      </section>
 
-    <article class="chrono-item heritage-node">
-      <div class="chrono-date">1987</div>
-      <div class="chrono-content card">
+      <section class="timeline-method card">
         <div class="card-body">
-          <div class="timeline-tags"><span class="tag">UNESCO</span><span class="tag gold">Patrimonio iscritto</span></div>
-          <h2>Venezia e la sua Laguna entra nella World Heritage List</h2>
-          <p>L’iscrizione riconosce il valore culturale del sistema urbano-lagunare veneziano, centrale per la coppia Suzhou–Venezia.</p>
-          <p class="linked-items"><strong>Item collegato:</strong> Venezia e la sua Laguna</p>
-          <div class="node-actions">
-            <a class="btn light" href="items/venezia.html">Apri scheda</a>
-            <a class="source-link" href="https://whc.unesco.org/en/list/394/" target="_blank" rel="noopener">Fonte UNESCO</a>
-          </div>
-        </div>
-      </div>
-    </article>
+          <h2>Come leggere la timeline</h2>
 
-    <article class="chrono-item heritage-node">
-      <div class="chrono-date">1997</div>
-      <div class="chrono-content card">
+          <p>
+            La timeline funziona come un secondo metodo di accesso alla collezione, accanto al catalogo e alla mappa.
+            Ogni nodo indica un momento rilevante per capire come i patrimoni, le fonti e le relazioni Cina–Italia
+            entrano nella struttura digitale del sito.
+          </p>
+
+          <a class="btn light" href="catalogo.html">Vedi il catalogo</a>
+          <a class="btn light" href="mappa.html">Vedi la mappa</a>
+          <a class="btn light" href="dati.html">Vedi i dati</a>
+        </div>
+      </section>
+
+      <section class="chrono" aria-label="Timeline integrata della collezione">
+        <article class="chrono-item relation-node">
+          <div class="chrono-date">1980</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag red">Gemellaggio civico</span>
+                <span class="tag">Fonte istituzionale</span>
+              </div>
+
+              <h2>Venezia e Suzhou stabiliscono un rapporto di gemellaggio</h2>
+
+              <p>
+                Il rapporto tra Venezia e Suzhou offre una base storica alla coppia interpretativa “città d’acqua”:
+                due spazi urbani segnati da canali, ponti, mobilità acquea e immaginari lagunari.
+              </p>
+
+              <p class="linked-items">
+                <strong>Relazione:</strong> Giardini classici di Suzhou ↔ Venezia e la sua Laguna
+              </p>
+
+              <div class="node-actions">
+                <a class="btn light" href="items/suzhou.html">Suzhou</a>
+                <a class="btn light" href="items/venezia.html">Venezia</a>
+
+                <a
+                  class="source-link"
+                  href="https://www.comune.venezia.it/it/content/suzhou-gemellaggi-gemellaggi-e-accordi-venezia-mondo"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte: Comune di Venezia
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item heritage-node">
+          <div class="chrono-date">1987</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag">UNESCO</span>
+                <span class="tag gold">Patrimonio iscritto</span>
+              </div>
+
+              <h2>Venezia e la sua Laguna entra nella World Heritage List</h2>
+
+              <p>
+                L’iscrizione riconosce il valore culturale del sistema urbano-lagunare veneziano,
+                centrale per la coppia Suzhou–Venezia.
+              </p>
+
+              <p class="linked-items">
+                <strong>Item collegato:</strong> Venezia e la sua Laguna
+              </p>
+
+              <div class="node-actions">
+                <a class="btn light" href="items/venezia.html">Apri scheda</a>
+
+                <a
+                  class="source-link"
+                  href="https://whc.unesco.org/en/list/394/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte UNESCO
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item heritage-node">
+          <div class="chrono-date">1997</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag">UNESCO</span>
+                <span class="tag gold">Patrimonio iscritto</span>
+              </div>
+
+              <h2>I Giardini classici di Suzhou entrano nella World Heritage List</h2>
+
+              <p>
+                L’iscrizione valorizza la tradizione dei giardini privati cinesi, intesi come microcosmi poetici
+                di acqua, roccia, architettura e vita letteraria.
+              </p>
+
+              <p class="linked-items">
+                <strong>Item collegato:</strong> Giardini classici di Suzhou
+              </p>
+
+              <div class="node-actions">
+                <a class="btn light" href="items/suzhou.html">Apri scheda</a>
+
+                <a
+                  class="source-link"
+                  href="https://whc.unesco.org/en/list/813/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte UNESCO
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item heritage-node">
+          <div class="chrono-date">1998</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag">UNESCO</span>
+                <span class="tag gold">Patrimonio iscritto</span>
+              </div>
+
+              <h2>Il Palazzo d’Estate di Pechino entra nella World Heritage List</h2>
+
+              <p>
+                Il sito viene riconosciuto come capolavoro del giardino paesaggistico cinese, fondato sul dialogo
+                tra lago, collina, architettura e paesaggio simbolico.
+              </p>
+
+              <p class="linked-items">
+                <strong>Item collegato:</strong> Palazzo d’Estate
+              </p>
+
+              <div class="node-actions">
+                <a class="btn light" href="items/yiheyuan.html">Apri scheda</a>
+
+                <a
+                  class="source-link"
+                  href="https://whc.unesco.org/en/list/880/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte UNESCO
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item heritage-node">
+          <div class="chrono-date">2001</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag">UNESCO</span>
+                <span class="tag gold">Patrimonio iscritto</span>
+              </div>
+
+              <h2>Villa d’Este, Tivoli entra nella World Heritage List</h2>
+
+              <p>
+                L’iscrizione riconosce l’eccezionale valore del giardino rinascimentale e del suo sistema
+                scenografico di fontane, acqua e architettura.
+              </p>
+
+              <p class="linked-items">
+                <strong>Item collegato:</strong> Villa d’Este, Tivoli
+              </p>
+
+              <div class="node-actions">
+                <a class="btn light" href="items/villa-deste.html">Apri scheda</a>
+
+                <a
+                  class="source-link"
+                  href="https://whc.unesco.org/en/list/1025/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte UNESCO
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item forum-node">
+          <div class="chrono-date">2017</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag red">Forum</span>
+                <span class="tag">Fonte istituzionale</span>
+              </div>
+
+              <h2>Il Forum Culturale Italia–Cina rilancia il gemellaggio tra siti UNESCO</h2>
+
+              <p>
+                Questo nodo introduce il gemellaggio come dispositivo culturale e istituzionale: non solo
+                somiglianza estetica tra luoghi, ma forma di cooperazione e promozione reciproca.
+              </p>
+
+              <p class="linked-items">
+                <strong>Funzione nel progetto:</strong> contesto istituzionale dei gemellaggi patrimoniali.
+              </p>
+
+              <div class="node-actions">
+                <a
+                  class="source-link"
+                  href="https://www.unesco.it/it/news/il-forum-culturale-italia-cina-lancia-il-gemellaggio-tra-i-siti-unesco/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte: UNESCO Italia
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item heritage-node">
+          <div class="chrono-date">2016</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag">Lista Tentativa</span>
+                <span class="tag gold">Status patrimoniale</span>
+              </div>
+
+              <h2>Shudao è documentato nella Lista Tentativa UNESCO</h2>
+
+              <p>
+                Nel progetto lo Shudao non viene presentato come sito già iscritto, ma come risorsa in Lista Tentativa.
+                Questa distinzione rende più corretta la relazione interpretativa con la Via Appia.
+              </p>
+
+              <p class="linked-items">
+                <strong>Relazione:</strong> Shudao ↔ Via Appia
+              </p>
+
+              <div class="node-actions">
+                <a class="btn light" href="items/shudao.html">Apri scheda</a>
+
+                <a
+                  class="source-link"
+                  href="https://whc.unesco.org/en/tentativelists/5994/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte UNESCO
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item forum-node">
+          <div class="chrono-date">2023</div>
+
+          <div class="chrono-content card featured-node">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag red">Forum</span>
+                <span class="tag">Cooperazione culturale</span>
+              </div>
+
+              <h2>Forum Cina–Italia per i gemellaggi tra i siti del patrimonio culturale mondiale UNESCO</h2>
+
+              <p>
+                Il forum di Hangzhou rafforza il dialogo tra istituzioni, esperti e territori. Nel progetto funziona
+                come snodo tra le relazioni già esistenti e le nuove coppie patrimoniali.
+              </p>
+
+              <p class="linked-items">
+                <strong>Relazioni richiamate:</strong> Palazzo d’Estate ↔ Villa d’Este; Suzhou ↔ Venezia.
+              </p>
+
+              <div class="node-actions">
+                <a
+                  class="source-link"
+                  href="https://news.ifeng.com/c/8U62hd6obZd"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte: China News / ifeng.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item heritage-node">
+          <div class="chrono-date">2024</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag">UNESCO</span>
+                <span class="tag gold">Patrimonio iscritto</span>
+              </div>
+
+              <h2>La Via Appia. Regina Viarum entra nella World Heritage List</h2>
+
+              <p>
+                L’iscrizione consente di leggere la Via Appia come controparte italiana dello Shudao nella categoria
+                delle vie storiche e delle infrastrutture culturali del movimento.
+              </p>
+
+              <p class="linked-items">
+                <strong>Relazione:</strong> Shudao ↔ Via Appia
+              </p>
+
+              <div class="node-actions">
+                <a class="btn light" href="items/via-appia.html">Apri scheda</a>
+
+                <a
+                  class="source-link"
+                  href="https://whc.unesco.org/en/list/1708/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte UNESCO
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item forum-node">
+          <div class="chrono-date">2024</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag red">Contesto istituzionale</span>
+                <span class="tag">Cina–Italia</span>
+              </div>
+
+              <h2>Dialogo istituzionale Cina–Italia e cooperazione culturale</h2>
+
+              <p>
+                Il quadro politico e diplomatico bilaterale fornisce uno sfondo recente alla lettura dei gemellaggi
+                e delle collaborazioni culturali tra patrimoni cinesi e italiani.
+              </p>
+
+              <p class="linked-items">
+                <strong>Funzione nel progetto:</strong> cornice istituzionale della rete.
+              </p>
+
+              <div class="node-actions">
+                <a
+                  class="source-link"
+                  href="https://www.gov.cn/yaowen/liebiao/202411/content_6985670.htm"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte: gov.cn
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item event-node">
+          <div class="chrono-date">2025</div>
+
+          <div class="chrono-content card">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag red">Esempio recente</span>
+                <span class="tag">Gemellaggio territoriale</span>
+              </div>
+
+              <h2>Procida e Dujiangyan come esempio di continuità degli scambi</h2>
+
+              <p>
+                Questo caso non fa parte dei sei item principali, ma mostra che la logica del gemellaggio e della
+                cooperazione territoriale Cina–Italia continua ad avere attualità.
+              </p>
+
+              <p class="linked-items">
+                <strong>Funzione nel progetto:</strong> fonte di contesto, non item principale.
+              </p>
+
+              <div class="node-actions">
+                <a
+                  class="source-link"
+                  href="https://pinograzioli.news/gemellaggio-tra-procida-e-dujiangyan-un-ponte-tra-italia-e-cina-per-proteggere-i-panda/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Apri la fonte
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="chrono-item event-node">
+          <div class="chrono-date">2025–2026</div>
+
+          <div class="chrono-content card featured-node">
+            <div class="card-body">
+              <div class="timeline-tags">
+                <span class="tag red">Evento</span>
+                <span class="tag">Mostra</span>
+              </div>
+
+              <h2>Dove il cielo incontra l’umano: il Palazzo d’Estate di Pechino a Villa d’Este</h2>
+
+              <p>
+                L’evento espositivo rende visibile la coppia Palazzo d’Estate–Villa d’Este non solo come confronto
+                tra siti, ma come relazione culturale attivata attraverso pratiche curatoriali e pubbliche.
+              </p>
+
+              <p class="linked-items">
+                <strong>Relazione:</strong> Palazzo d’Estate ↔ Villa d’Este
+              </p>
+
+              <div class="node-actions">
+                <a class="btn light" href="items/yiheyuan.html">Palazzo d’Estate</a>
+                <a class="btn light" href="items/villa-deste.html">Villa d’Este</a>
+
+                <a
+                  class="source-link"
+                  href="https://www.artribune.com/mostre-evento-arte/dove-il-cielo-incontra-lumano-%E5%A4%A9%E4%BA%BA%E5%90%88%E4%B8%80-il-palazzo-destate-di-pechino-a-villa-deste/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Fonte: Artribune
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="timeline-note card">
         <div class="card-body">
-          <div class="timeline-tags"><span class="tag">UNESCO</span><span class="tag gold">Patrimonio iscritto</span></div>
-          <h2>I Giardini classici di Suzhou entrano nella World Heritage List</h2>
-          <p>L’iscrizione valorizza la tradizione dei giardini privati cinesi, intesi come microcosmi poetici di acqua, roccia, architettura e vita letteraria.</p>
-          <p class="linked-items"><strong>Item collegato:</strong> Giardini classici di Suzhou</p>
-          <div class="node-actions">
-            <a class="btn light" href="items/suzhou.html">Apri scheda</a>
-            <a class="source-link" href="https://whc.unesco.org/en/list/813/" target="_blank" rel="noopener">Fonte UNESCO</a>
-          </div>
+          <h2>Nota di selezione</h2>
+
+          <p>
+            La cronologia non pretende di ricostruire l’intera storia delle relazioni culturali Cina–Italia.
+            Seleziona invece i nodi temporali più utili per comprendere la collezione digitale: i sei item principali,
+            le tre relazioni interpretative, le fonti istituzionali e gli eventi collegati.
+          </p>
         </div>
+      </section>
+    </main>
+
+    <button class="btn backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      ↑ Top
+    </button>
+
+    <footer class="footer">
+      <div class="container">
+        <p>
+          <strong>Patrimoni in Dialogo</strong>
+          — progetto didattico per Digital Humanities e Patrimonio Culturale.
+        </p>
+
+        <p class="small">
+          File dati:
+          <a href="data/items.csv">CSV</a> ·
+          <a href="data/items.json">JSON</a> ·
+          <a href="xml/metadata-dc.xml">Dublin Core XML</a> ·
+          <a href="xml/fonte-tei.xml">TEI XML</a>
+        </p>
       </div>
-    </article>
+    </footer>
 
-    <article class="chrono-item heritage-node">
-      <div class="chrono-date">1998</div>
-      <div class="chrono-content card">
-        <div class="card-body">
-          <div class="timeline-tags"><span class="tag">UNESCO</span><span class="tag gold">Patrimonio iscritto</span></div>
-          <h2>Il Palazzo d’Estate di Pechino entra nella World Heritage List</h2>
-          <p>Il sito viene riconosciuto come capolavoro del giardino paesaggistico cinese, fondato sul dialogo tra lago, collina, architettura e paesaggio simbolico.</p>
-          <p class="linked-items"><strong>Item collegato:</strong> Palazzo d’Estate</p>
-          <div class="node-actions">
-            <a class="btn light" href="items/yiheyuan.html">Apri scheda</a>
-            <a class="source-link" href="https://whc.unesco.org/en/list/880/" target="_blank" rel="noopener">Fonte UNESCO</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="chrono-item heritage-node">
-      <div class="chrono-date">2001</div>
-      <div class="chrono-content card">
-        <div class="card-body">
-          <div class="timeline-tags"><span class="tag">UNESCO</span><span class="tag gold">Patrimonio iscritto</span></div>
-          <h2>Villa d’Este, Tivoli entra nella World Heritage List</h2>
-          <p>L’iscrizione riconosce l’eccezionale valore del giardino rinascimentale e del suo sistema scenografico di fontane, acqua e architettura.</p>
-          <p class="linked-items"><strong>Item collegato:</strong> Villa d’Este, Tivoli</p>
-          <div class="node-actions">
-            <a class="btn light" href="items/villa-deste.html">Apri scheda</a>
-            <a class="source-link" href="https://whc.unesco.org/en/list/1025/" target="_blank" rel="noopener">Fonte UNESCO</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="chrono-item forum-node">
-      <div class="chrono-date">2017</div>
-      <div class="chrono-content card">
-        <div class="card-body">
-          <div class="timeline-tags"><span class="tag red">Forum</span><span class="tag">Fonte istituzionale</span></div>
-          <h2>Il Forum Culturale Italia–Cina rilancia il gemellaggio tra siti UNESCO</h2>
-          <p>Questo nodo introduce il gemellaggio come dispositivo culturale e istituzionale: non solo somiglianza estetica tra luoghi, ma forma di cooperazione e promozione reciproca.</p>
-          <p class="linked-items"><strong>Funzione nel progetto:</strong> contesto istituzionale dei gemellaggi patrimoniali.</p>
-          <div class="node-actions">
-            <a class="source-link" href="https://www.unesco.it/it/news/il-forum-culturale-italia-cina-lancia-il-gemellaggio-tra-i-siti-unesco/" target="_blank" rel="noopener">Fonte: UNESCO Italia</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="chrono-item heritage-node">
-      <div class="chrono-date">2016</div>
-      <div class="chrono-content card">
-        <div class="card-body">
-          <div class="timeline-tags"><span class="tag">Lista Tentativa</span><span class="tag gold">Status patrimoniale</span></div>
-          <h2>Shudao è documentato nella Lista Tentativa UNESCO</h2>
-          <p>Nel progetto lo Shudao non viene presentato come sito già iscritto, ma come risorsa in Lista Tentativa. Questa distinzione rende più corretta la relazione interpretativa con la Via Appia.</p>
-          <p class="linked-items"><strong>Relazione:</strong> Shudao ↔ Via Appia</p>
-          <div class="node-actions">
-            <a class="btn light" href="items/shudao.html">Apri scheda</a>
-            <a class="source-link" href="https://whc.unesco.org/en/tentativelists/5994/" target="_blank" rel="noopener">Fonte UNESCO</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="chrono-item forum-node">
-      <div class="chrono-date">2023</div>
-      <div class="chrono-content card featured-node">
-        <div class="card-body">
-          <div class="timeline-tags"><span class="tag red">Forum</span><span class="tag">Cooperazione culturale</span></div>
-          <h2>Forum Cina–Italia per i gemellaggi tra i siti del patrimonio culturale mondiale UNESCO</h2>
-          <p>Il forum di Hangzhou rafforza il dialogo tra istituzioni, esperti e territori. Nel progetto funziona come snodo tra le relazioni già esistenti e le nuove coppie patrimoniali.</p>
-          <p class="linked-items"><strong>Relazioni richiamate:</strong> Palazzo d’Estate ↔ Villa d’Este; Suzhou ↔ Venezia.</p>
-          <div class="node-actions">
-            <a class="source-link" href="https://news.ifeng.com/c/8U62hd6obZd" target="_blank" rel="noopener">Fonte: China News / ifeng.com</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="chrono-item heritage-node">
-      <div class="chrono-date">2024</div>
-      <div class="chrono-content card">
-        <div class="card-body">
-          <div class="timeline-tags"><span class="tag">UNESCO</span><span class="tag gold">Patrimonio iscritto</span></div>
-          <h2>La Via Appia. Regina Viarum entra nella World Heritage List</h2>
-          <p>L’iscrizione consente di leggere la Via Appia come controparte italiana dello Shudao nella categoria delle vie storiche e delle infrastrutture culturali del movimento.</p>
-          <p class="linked-items"><strong>Relazione:</strong> Shudao ↔ Via Appia</p>
-          <div class="node-actions">
-            <a class="btn light" href="items/via-appia.html">Apri scheda</a>
-            <a class="source-link" href="https://whc.unesco.org/en/list/1708/" target="_blank" rel="noopener">Fonte UNESCO</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="chrono-item forum-node">
-      <div class="chrono-date">2024</div>
-      <div class="chrono-content card">
-        <div class="card-body">
-          <div class="timeline-tags"><span class="tag red">Contesto istituzionale</span><span class="tag">Cina–Italia</span></div>
-          <h2>Dialogo istituzionale Cina–Italia e cooperazione culturale</h2>
-          <p>Il quadro politico e diplomatico bilaterale fornisce uno sfondo recente alla lettura dei gemellaggi e delle collaborazioni culturali tra patrimoni cinesi e italiani.</p>
-          <p class="linked-items"><strong>Funzione nel progetto:</strong> cornice istituzionale della rete.</p>
-          <div class="node-actions">
-            <a class="source-link" href="https://www.gov.cn/yaowen/liebiao/202411/content_6985670.htm" target="_blank" rel="noopener">Fonte: gov.cn</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="chrono-item event-node">
-      <div class="chrono-date">2025</div>
-      <div class="chrono-content card">
-        <div class="card-body">
-          <div class="timeline-tags"><span class="tag red">Esempio recente</span><span class="tag">Gemellaggio territoriale</span></div>
-          <h2>Procida e Dujiangyan come esempio di continuità degli scambi</h2>
-          <p>Questo caso non fa parte dei sei item principali, ma mostra che la logica del gemellaggio e della cooperazione territoriale Cina–Italia continua ad avere attualità.</p>
-          <p class="linked-items"><strong>Funzione nel progetto:</strong> fonte di contesto, non item principale.</p>
-          <div class="node-actions">
-            <a class="source-link" href="https://pinograzioli.news/gemellaggio-tra-procida-e-dujiangyan-un-ponte-tra-italia-e-cina-per-proteggere-i-panda/" target="_blank" rel="noopener">Apri la fonte</a>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <article class="chrono-item event-node">
-      <div class="chrono-date">2025–2026</div>
-      <div class="chrono-content card featured-node">
-        <div class="card-body">
-          <div class="timeline-tags"><span class="tag red">Evento</span><span class="tag">Mostra</span></div>
-          <h2>Dove il cielo incontra l’umano: il Palazzo d’Estate di Pechino a Villa d’Este</h2>
-          <p>L’evento espositivo rende visibile la coppia Palazzo d’Estate–Villa d’Este non solo come confronto tra siti, ma come relazione culturale attivata attraverso pratiche curatoriali e pubbliche.</p>
-          <p class="linked-items"><strong>Relazione:</strong> Palazzo d’Estate ↔ Villa d’Este</p>
-          <div class="node-actions">
-            <a class="btn light" href="items/yiheyuan.html">Palazzo d’Estate</a>
-            <a class="btn light" href="items/villa-deste.html">Villa d’Este</a>
-            <a class="source-link" href="https://www.artribune.com/mostre-evento-arte/dove-il-cielo-incontra-lumano-%E5%A4%A9%E4%BA%BA%E5%90%88%E4%B8%80-il-palazzo-destate-di-pechino-a-villa-deste/" target="_blank" rel="noopener">Fonte: Artribune</a>
-          </div>
-        </div>
-      </div>
-    </article>
-  </section>
-
-  <section class="timeline-note card">
-    <div class="card-body">
-      <h2>Nota di selezione</h2>
-      <p>
-        La cronologia non pretende di ricostruire l’intera storia delle relazioni culturali Cina–Italia.
-        Seleziona invece i nodi temporali più utili per comprendere la collezione digitale: i sei item principali,
-        le tre relazioni interpretative, le fonti istituzionali e gli eventi collegati.
-      </p>
-    </div>
-  </section>
-</main>
-
-<button class="btn backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
-<footer class="footer">
-  <div class="container">
-    <p><strong>Patrimoni in Dialogo</strong> — progetto didattico per Digital Humanities e Patrimonio Culturale.</p>
-    <p class="small">File dati: <a href="data/items.csv">CSV</a> · <a href="data/items.json">JSON</a> · <a href="xml/metadata-dc.xml">Dublin Core XML</a> · <a href="xml/fonte-tei.xml">TEI XML</a></p>
-  </div>
-</footer>
-<script src="js/script.js"></script>
-</body>
+    <script src="js/script.js"></script>
+  </body>
 </html>

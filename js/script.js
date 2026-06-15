@@ -1,34 +1,218 @@
-function toggleMenu(){document.querySelector('.navlinks').classList.toggle('open')}
-function setupAccordions(){document.querySelectorAll('.accordion button').forEach(btn=>{btn.addEventListener('click',()=>{const p=btn.nextElementSibling;p.style.display=p.style.display==='block'?'none':'block';btn.setAttribute('aria-expanded',p.style.display==='block')})})}
-function openTab(evt, id){document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));document.querySelectorAll('.tab-button').forEach(el=>el.classList.remove('active'));document.getElementById(id).classList.add('active');evt.currentTarget.classList.add('active')}
-function openModal(id){document.getElementById(id).style.display='block'}
-function closeModal(id){document.getElementById(id).style.display='none'}
-window.onclick=function(e){document.querySelectorAll('.modal').forEach(m=>{if(e.target==m)m.style.display='none'})}
-function filterCards(){const q=(document.getElementById('searchInput')?.value||'').toLowerCase();const kind=(document.getElementById('kindFilter')?.value||'all');document.querySelectorAll('[data-card]').forEach(card=>{const text=card.innerText.toLowerCase();const k=card.dataset.kind;card.style.display=(text.includes(q)&&(kind==='all'||kind===k))?'block':'none'})}
-function filterTable(){const q=(document.getElementById('tableSearch')?.value||'').toLowerCase();document.querySelectorAll('#dataTable tbody tr').forEach(row=>{row.style.display=row.innerText.toLowerCase().includes(q)?'':'none'})}
-let slideIndex=0;function showSlide(n){const slides=document.querySelectorAll('.institutional-slideshow .slide');const dots=document.querySelectorAll('.institutional-slideshow .dot');if(!slides.length)return;slideIndex=(n+slides.length)%slides.length;slides.forEach(s=>s.classList.remove('active'));dots.forEach(d=>d.classList.remove('active'));slides[slideIndex].classList.add('active');if(dots[slideIndex])dots[slideIndex].classList.add('active')}function nextSlide(delta){showSlide(slideIndex+delta)}
-function setupBackTop(){const b=document.querySelector('.backtop');if(!b)return;window.addEventListener('scroll',()=>{b.style.display=window.scrollY>600?'inline-flex':'none'})}
-function announcePoint(name){const box=document.getElementById('mapInfo'); if(box) box.innerHTML='<strong>'+name+'</strong><br>Questo punto mostra la posizione approssimativa nel progetto. Apri la scheda item o la mappa OSM per il dettaglio.'}
-window.addEventListener('DOMContentLoaded',()=>{
+function toggleMenu() {
+  const navlinks = document.querySelector('.navlinks');
+
+  if (!navlinks) {
+    return;
+  }
+
+  navlinks.classList.toggle('open');
+}
+
+function setupAccordions() {
+  const accordionButtons = document.querySelectorAll('.accordion button');
+
+  accordionButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      const panel = button.nextElementSibling;
+
+      if (!panel) {
+        return;
+      }
+
+      if (panel.style.display === 'block') {
+        panel.style.display = 'none';
+        button.setAttribute('aria-expanded', 'false');
+      } else {
+        panel.style.display = 'block';
+        button.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+function openTab(event, id) {
+  const tabContents = document.querySelectorAll('.tab-content');
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const selectedTabContent = document.getElementById(id);
+
+  tabContents.forEach(function (content) {
+    content.classList.remove('active');
+  });
+
+  tabButtons.forEach(function (button) {
+    button.classList.remove('active');
+  });
+
+  if (selectedTabContent) {
+    selectedTabContent.classList.add('active');
+  }
+
+  if (event && event.currentTarget) {
+    event.currentTarget.classList.add('active');
+  }
+}
+
+function openModal(id) {
+  const modal = document.getElementById(id);
+
+  if (!modal) {
+    return;
+  }
+
+  modal.style.display = 'block';
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+
+  if (!modal) {
+    return;
+  }
+
+  modal.style.display = 'none';
+}
+
+window.onclick = function (event) {
+  const modals = document.querySelectorAll('.modal');
+
+  modals.forEach(function (modal) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+};
+
+function filterCards() {
+  const searchInput = document.getElementById('searchInput');
+  const kindFilter = document.getElementById('kindFilter');
+
+  const query = searchInput ? searchInput.value.toLowerCase() : '';
+  const selectedKind = kindFilter ? kindFilter.value : 'all';
+
+  const cards = document.querySelectorAll('[data-card]');
+
+  cards.forEach(function (card) {
+    const cardText = card.innerText.toLowerCase();
+    const cardKind = card.dataset.kind;
+
+    const matchesSearch = cardText.includes(query);
+    const matchesKind = selectedKind === 'all' || selectedKind === cardKind;
+
+    if (matchesSearch && matchesKind) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function filterTable() {
+  const tableSearch = document.getElementById('tableSearch');
+  const query = tableSearch ? tableSearch.value.toLowerCase() : '';
+
+  const rows = document.querySelectorAll('#dataTable tbody tr');
+
+  rows.forEach(function (row) {
+    const rowText = row.innerText.toLowerCase();
+
+    if (rowText.includes(query)) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
+
+let slideIndex = 0;
+
+function showSlide(index) {
+  const slides = document.querySelectorAll('.institutional-slideshow .slide');
+  const dots = document.querySelectorAll('.institutional-slideshow .dot');
+
+  if (!slides.length) {
+    return;
+  }
+
+  slideIndex = (index + slides.length) % slides.length;
+
+  slides.forEach(function (slide) {
+    slide.classList.remove('active');
+  });
+
+  dots.forEach(function (dot) {
+    dot.classList.remove('active');
+  });
+
+  slides[slideIndex].classList.add('active');
+
+  if (dots[slideIndex]) {
+    dots[slideIndex].classList.add('active');
+  }
+}
+
+function nextSlide(delta) {
+  showSlide(slideIndex + delta);
+}
+
+function setupBackTop() {
+  const backTopButton = document.querySelector('.backtop');
+
+  if (!backTopButton) {
+    return;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 600) {
+      backTopButton.style.display = 'inline-flex';
+    } else {
+      backTopButton.style.display = 'none';
+    }
+  });
+}
+
+function announcePoint(name) {
+  const box = document.getElementById('mapInfo');
+
+  if (!box) {
+    return;
+  }
+
+  box.innerHTML =
+    '<strong>' +
+    name +
+    '</strong><br>Questo punto mostra la posizione approssimativa nel progetto. Apri la scheda item o la mappa OSM per il dettaglio.';
+}
+
+window.addEventListener('DOMContentLoaded', function () {
   setupAccordions();
   setupBackTop();
   setupLanguageSwitcher();
-  applyLanguage(localStorage.getItem('preferredLanguage') || 'it');
+
+  const preferredLanguage = localStorage.getItem('preferredLanguage') || 'it';
+  applyLanguage(preferredLanguage);
+
   showSlide(0);
 
   const slideshow = document.querySelector('.institutional-slideshow');
   const slides = document.querySelectorAll('.institutional-slideshow .slide');
+
   if (slideshow && slides.length > 1) {
-    let autoSlideTimer = setInterval(()=>nextSlide(1), 5000);
+    let autoSlideTimer = setInterval(function () {
+      nextSlide(1);
+    }, 5000);
 
     // Pausa al passaggio del mouse, così l'utente può leggere la card.
-    slideshow.addEventListener('mouseenter', ()=>clearInterval(autoSlideTimer));
-    slideshow.addEventListener('mouseleave', ()=>{
-      autoSlideTimer = setInterval(()=>nextSlide(1), 5000);
+    slideshow.addEventListener('mouseenter', function () {
+      clearInterval(autoSlideTimer);
+    });
+
+    slideshow.addEventListener('mouseleave', function () {
+      autoSlideTimer = setInterval(function () {
+        nextSlide(1);
+      }, 5000);
     });
   }
-})
-
+});
 
 
 /* --- Trilingual interface: IT / 中文 / EN --- */
@@ -97,12 +281,12 @@ const I18N = {
     "Apri scheda item": "打开条目页面",
     "↑ Top": "↑ 顶部",
     "Cerca per nome, luogo, tema…": "按名称、地点、主题搜索……",
-    "Shudao": "蜀道 Shudao",
-    "Palazzo d’Estate": "颐和园 Palazzo d’Estate",
-    "Giardini classici di Suzhou": "苏州古典园林 Giardini classici di Suzhou",
-    "Venezia e la sua Laguna": "威尼斯及其潟湖 Venezia e la sua Laguna",
-    "Via Appia. Regina Viarum": "阿皮亚古道 Via Appia",
-    "Villa d’Este, Tivoli": "埃斯特别墅 Villa d’Este",
+    "Shudao": "蜀道",
+    "Palazzo d’Estate": "颐和园",
+    "Giardini classici di Suzhou": "苏州古典园林",
+    "Venezia e la sua Laguna": "威尼斯及其潟湖",
+    "Via Appia. Regina Viarum": "阿皮亚古道",
+    "Villa d’Este, Tivoli": "埃斯特别墅",
     "Vie storiche": "历史道路",
     "Giardini e acqua": "园林与水",
     "Città d’acqua e giardini": "水城与园林",
@@ -113,6 +297,7 @@ const I18N = {
     "Il progetto non presenta soltanto sei luoghi patrimoniali: li trasforma in una collezione digitale strutturata, composta da item, metadati, fonti autorevoli, dati geografici e relazioni tipizzate.": "本项目并非只展示六处遗产地，而是将它们转化为一个结构化数字集合，由条目、元数据、权威来源、地理数据和类型化关系组成。",
     "Progetto didattico per Digital Humanities e Patrimonio Culturale.": "Digital Humanities e Patrimonio Culturale 课程项目。"
   },
+
   "en": {
     "Patrimoni in Dialogo": "Heritages in Dialogue",
     "Rete digitale Cina–Italia": "China–Italy Digital Heritage Network",
@@ -231,6 +416,10 @@ Object.assign(I18N.zh, {
   "Caso studio": "案例研究",
   "Siti UNESCO": "UNESCO 遗产地",
   "Villa d’Este ↔ Palazzo d’Estate": "埃斯特别墅 ↔ 颐和园",
+  "Shudao ↔ Via Appia": "蜀道 ↔ 阿皮亚古道",
+  "Palazzo d’Estate ↔ Villa d’Este": "颐和园 ↔ 埃斯特别墅",
+  "Giardini di Suzhou ↔ Venezia": "苏州古典园林 ↔ 威尼斯",
+  "Suzhou ↔ Venezia": "苏州 ↔ 威尼斯",
   "Un gemellaggio esplicitamente formulato tra due paesaggi d’acqua e di rappresentazione del potere.": "这是两个水景与权力表征景观之间被明确提出的结好案例。",
   "Fonte: Visit Lazio": "来源：Visit Lazio",
   "Mostra / evento": "展览 / 活动",
@@ -412,218 +601,222 @@ Object.assign(I18N.zh, {
   "Apri item correlato: Giardini classici di Suzhou 苏州古典园林": "打开关联条目：苏州古典园林"
 });
 Object.assign(I18N.en, {
-  "Salta al contenuto": "Skip to content",
-  "Menu": "Menu",
-  "Digital Humanities · Patrimonio Culturale · Cina–Italia": "Digital Humanities · Cultural Heritage · China–Italy",
-  "Le tre coppie patrimoniali di questo sito non nascono come semplici somiglianze visive: si collocano nel quadro più ampio della cooperazione culturale tra Cina e Italia, costruita attraverso dialoghi istituzionali, forum dedicati ai siti UNESCO e pratiche di gemellaggio fra siti e città.": "The three heritage pairs in this site are not based merely on visual resemblance; they are situated within the broader framework of China–Italy cultural cooperation, built through institutional dialogues, forums dedicated to UNESCO sites, and twinning practices between sites and cities.",
-  "In questo progetto il": "In this project,",
-  "gemellaggio": "twinning",
-  "è inteso come una relazione di cooperazione, confronto e reciproca valorizzazione. Il sito traduce questa cornice in una collezione digitale strutturata, fatta di": "is understood as a relation of cooperation, comparison and mutual valorisation. The site translates this framework into a structured digital collection made of",
-  "item, metadati, fonti autorevoli, coordinate geografiche e relazioni tipizzate": "items, metadata, authoritative sources, geographic coordinates and typed relations",
-  "Dallo storico rapporto Venezia–Suzhou fino a esempi più recenti come Procida–Dujiangyan, la cooperazione si sviluppa anche a livello civico e territoriale. Secondo il Ministero degli Affari Esteri della Repubblica Popolare Cinese, ad aprile 2026 Cina e Italia hanno stabilito": "From the historical Venice–Suzhou relationship to more recent cases such as Procida–Dujiangyan, cooperation also develops at civic and territorial levels. According to the Ministry of Foreign Affairs of the People’s Republic of China, as of April 2026 China and Italy had established",
-  "91 coppie di relazioni amichevoli": "91 pairs of friendly relations",
-  "tra province, città e regioni.": "between provinces, cities and regions.",
-  "Il tema della cooperazione culturale rientra nel quadro dei rapporti bilaterali Cina–Italia, rafforzando lo sfondo istituzionale entro cui leggere i gemellaggi patrimoniali.": "Cultural cooperation belongs to the framework of China–Italy bilateral relations and strengthens the institutional background for reading heritage twinnings.",
-  "Forum Cina–Italia per i gemellaggi tra i siti del patrimonio culturale mondiale UNESCO": "China–Italy Forum for Twinnings between UNESCO World Heritage Sites",
-  "approfondisce il dialogo tra istituzioni, esperti e territori.": "deepens the dialogue among institutions, experts and territories.",
-  "Forum Culturale Italia–Cina": "Italy–China Cultural Forum",
-  "rilancia il dialogo tra i siti UNESCO dei due Paesi e presenta il gemellaggio come strumento di confronto culturale e promozione condivisa.": "relaunches dialogue between the UNESCO sites of the two countries and presents twinning as a tool for cultural comparison and shared promotion.",
-  "lo": "",
-  "è trattato correttamente come risorsa in": "is correctly treated as a resource in",
-  ", non come sito già iscritto. Per questo la relazione con la": "rather than as an already inscribed site. For this reason, the relation with",
-  "è usata soprattutto come confronto interpretativo nel quadro generale dei gemellaggi Cina–Italia.": "is used mainly as an interpretive comparison within the broader framework of China–Italy twinnings.",
-  "Cornice politica": "Political framework",
-  "Colloquio dei capi e cooperazione bilaterale": "Leaders’ meeting and bilateral cooperation",
-  "Il dialogo tra i vertici istituzionali fornisce il quadro politico entro cui si collocano anche gli scambi culturali e patrimoniali tra Cina e Italia.": "Dialogue at the highest institutional level provides the political framework for cultural and heritage exchanges between China and Italy.",
-  "Fonte ufficiale: Governo cinese / gov.cn": "Official source: Chinese Government / gov.cn",
-  "UNESCO Italia": "UNESCO Italy",
-  "Il Forum Culturale Italia–Cina lancia il gemellaggio tra i siti UNESCO": "The Italy–China Cultural Forum launches twinning between UNESCO sites",
-  "Uno dei passaggi chiave per la costruzione di una rete di relazioni tra patrimoni dei due Paesi.": "One of the key steps in building a network of relations between the two countries’ heritage sites.",
-  "Fonte: Commissione Nazionale Italiana per l’UNESCO": "Source: Italian National Commission for UNESCO",
-  "Forum Cina–Italia per i gemellaggi tra i siti UNESCO": "China–Italy Forum for Twinnings between UNESCO Sites",
-  "Il forum di Hangzhou consolida lo scambio di esperienze e di pratiche di tutela tra siti patrimoniali cinesi e italiani.": "The Hangzhou Forum consolidates the exchange of experiences and conservation practices between Chinese and Italian heritage sites.",
-  "Fonte: China News / 凤凰网": "Source: China News / ifeng.com",
-  "Caso studio": "Case study",
-  "Siti UNESCO": "UNESCO sites",
-  "Villa d’Este ↔ Palazzo d’Estate": "Villa d’Este ↔ Summer Palace",
-  "Un gemellaggio esplicitamente formulato tra due paesaggi d’acqua e di rappresentazione del potere.": "An explicitly formulated twinning between two water landscapes and representations of power.",
-  "Fonte: Visit Lazio": "Source: Visit Lazio",
-  "Mostra / evento": "Exhibition / event",
-  "Dove il cielo incontra l’umano: il Palazzo d’Estate di Pechino a Villa d’Este": "Where Heaven Meets the Human: Beijing Summer Palace at Villa d’Este",
-  "Questa iniziativa espositiva rende visibile il dialogo culturale tra i due siti anche sul piano curatoriale e pubblico, trasformando il gemellaggio in esperienza culturale condivisa.": "This exhibition initiative makes the cultural dialogue between the two sites visible at the curatorial and public level, transforming twinning into a shared cultural experience.",
-  "Fonte: Artribune": "Source: Artribune",
-  "Gemellaggio civico": "Civic twinning",
-  "Suzhou ↔ Venezia": "Suzhou ↔ Venice",
-  "Il rapporto tra Suzhou e Venezia mostra come la cooperazione Cina–Italia passi anche attraverso legami urbani di lunga durata.": "The relation between Suzhou and Venice shows how China–Italy cooperation also operates through long-standing urban links.",
-  "Fonte ufficiale: Comune di Venezia": "Official source: City of Venice",
-  "Esempio recente": "Recent example",
-  "Procida ↔ Dujiangyan": "Procida ↔ Dujiangyan",
-  "Un esempio recente di gemellaggio territoriale che rende visibile la continuità e l’attualità degli scambi culturali tra i due Paesi.": "A recent example of territorial twinning that makes visible the continuity and current relevance of cultural exchanges between the two countries.",
-  "Fonte: notizia illustrativa fornita dall’utente": "Source: illustrative news item provided by the user",
-  "Sistema antico di vie montane tra Cina centrale e Sichuan": "Ancient system of mountain routes between central China and Sichuan",
-  "La più antica e importante delle grandi strade romane": "The oldest and most important of the great Roman roads",
-  "Giardino imperiale di Pechino e capolavoro del paesaggio cinese": "Imperial garden in Beijing and masterpiece of Chinese landscape design",
-  "Giardino rinascimentale italiano e giardino d’acqua": "Italian Renaissance garden and water garden",
-  "Sistema di giardini storici privati nella città di Suzhou": "System of historic private gardens in the city of Suzhou",
-  "Città lagunare, sistema insulare e paesaggio culturale": "Lagoon city, island system and cultural landscape",
-  "Card filtrabili per paese e ricerca libera.": "Cards filterable by country and free search.",
-  "Punti geografici, mappe OSM e navigazione spaziale.": "Geographic points, OSM maps and spatial navigation.",
-  "Tabella strutturata, CSV, JSON, XML/DC e TEI.": "Structured table, CSV, JSON, XML/DC and TEI.",
-  "costruisce una piccola collezione digitale dedicata ai rapporti culturali fra patrimoni cinesi e italiani. Ogni item è descritto attraverso metadati, fonti, coordinate e relazioni con altri item.": "builds a small digital collection dedicated to cultural relations between Chinese and Italian heritage sites. Each item is described through metadata, sources, coordinates and relations with other items.",
-  "La domanda guida è: come trasformare gemellaggi e analogie patrimoniali in un sistema navigabile di dati, relazioni e interpretazioni?": "The guiding question is: how can heritage twinnings and analogies be transformed into a navigable system of data, relations and interpretations?",
-  "File dati:": "Data files:",
-  "/ Catalogo": "/ Catalogue",
-  "Timeline della collezione | Patrimoni in Dialogo": "Collection Timeline | Heritages in Dialogue",
-  "/ Timeline": "/ Timeline",
-  "Questa pagina non raccoglie semplicemente notizie: propone una navigazione temporale integrata tra iscrizioni UNESCO, gemellaggi, forum culturali, fonti istituzionali ed eventi collegati. I nodi sono ordinati cronologicamente e collegano i sei item principali alle relazioni interpretative del progetto.": "This page does not simply collect news: it offers integrated temporal navigation across UNESCO inscriptions, twinnings, cultural forums, institutional sources and related events. The nodes are ordered chronologically and connect the six main items to the project’s interpretive relations.",
-  "Heritage / UNESCO": "Heritage / UNESCO",
-  "Gemellaggio / relazione": "Twinning / relation",
-  "Forum / istituzioni": "Forum / institutions",
-  "Evento / fonte": "Event / source",
-  "La timeline funziona come un secondo metodo di accesso alla collezione, accanto al catalogo e alla mappa. Ogni nodo indica un momento rilevante per capire come i patrimoni, le fonti e le relazioni Cina–Italia entrano nella struttura digitale del sito.": "The timeline functions as a second access method to the collection, alongside the catalogue and the map. Each node marks a relevant moment for understanding how the heritage sites, sources and China–Italy relations enter the digital structure of the website.",
-  "Fonte istituzionale": "Institutional source",
-  "Venezia e Suzhou stabiliscono un rapporto di gemellaggio": "Venice and Suzhou establish a twinning relationship",
-  "Il rapporto tra Venezia e Suzhou offre una base storica alla coppia interpretativa “città d’acqua”: due spazi urbani segnati da canali, ponti, mobilità acquea e immaginari lagunari.": "The relationship between Venice and Suzhou provides a historical basis for the interpretive pair “water cities”: two urban spaces shaped by canals, bridges, water mobility and lagoon imaginaries.",
-  "Relazione:": "Relation:",
-  "Fonte: Comune di Venezia": "Source: City of Venice",
-  "Patrimonio iscritto": "Inscribed heritage",
-  "Venezia e la sua Laguna entra nella World Heritage List": "Venice and its Lagoon enters the World Heritage List",
-  "L’iscrizione riconosce il valore culturale del sistema urbano-lagunare veneziano, centrale per la coppia Suzhou–Venezia.": "The inscription recognises the cultural value of Venice’s urban-lagoon system, central to the Suzhou–Venice pair.",
-  "Item collegato:": "Linked item:",
-  "Fonte UNESCO": "UNESCO source",
-  "I Giardini classici di Suzhou entrano nella World Heritage List": "The Classical Gardens of Suzhou enter the World Heritage List",
-  "L’iscrizione valorizza la tradizione dei giardini privati cinesi, intesi come microcosmi poetici di acqua, roccia, architettura e vita letteraria.": "The inscription highlights the tradition of Chinese private gardens, understood as poetic microcosms of water, rock, architecture and literati life.",
-  "Il Palazzo d’Estate di Pechino entra nella World Heritage List": "The Summer Palace in Beijing enters the World Heritage List",
-  "Il sito viene riconosciuto come capolavoro del giardino paesaggistico cinese, fondato sul dialogo tra lago, collina, architettura e paesaggio simbolico.": "The site is recognised as a masterpiece of Chinese landscape garden design, based on the dialogue between lake, hill, architecture and symbolic landscape.",
-  "Villa d’Este, Tivoli entra nella World Heritage List": "Villa d’Este, Tivoli enters the World Heritage List",
-  "L’iscrizione riconosce l’eccezionale valore del giardino rinascimentale e del suo sistema scenografico di fontane, acqua e architettura.": "The inscription recognises the outstanding value of the Renaissance garden and its scenic system of fountains, water and architecture.",
-  "Questo nodo introduce il gemellaggio come dispositivo culturale e istituzionale: non solo somiglianza estetica tra luoghi, ma forma di cooperazione e promozione reciproca.": "This node introduces twinning as a cultural and institutional device: not only aesthetic similarity between places, but a form of cooperation and mutual promotion.",
-  "Funzione nel progetto:": "Function in the project:",
-  "contesto istituzionale dei gemellaggi patrimoniali.": "institutional context for heritage twinnings.",
-  "Lista Tentativa": "Tentative List",
-  "Status patrimoniale": "Heritage status",
-  "Shudao è documentato nella Lista Tentativa UNESCO": "Shudao is documented in the UNESCO Tentative List",
-  "Nel progetto lo Shudao non viene presentato come sito già iscritto, ma come risorsa in Lista Tentativa. Questa distinzione rende più corretta la relazione interpretativa con la Via Appia.": "In the project, Shudao is not presented as an already inscribed site, but as a Tentative List resource. This distinction makes the interpretive relation with the Via Appia more accurate.",
-  "Cooperazione culturale": "Cultural cooperation",
-  "Il forum di Hangzhou rafforza il dialogo tra istituzioni, esperti e territori. Nel progetto funziona come snodo tra le relazioni già esistenti e le nuove coppie patrimoniali.": "The Hangzhou Forum strengthens dialogue among institutions, experts and territories. In the project, it functions as a link between existing relations and new heritage pairs.",
-  "Relazioni richiamate:": "Relations recalled:",
-  "Palazzo d’Estate ↔ Villa d’Este; Suzhou ↔ Venezia.": "Summer Palace ↔ Villa d’Este; Suzhou ↔ Venice.",
-  "La Via Appia. Regina Viarum entra nella World Heritage List": "The Via Appia. Regina Viarum enters the World Heritage List",
-  "L’iscrizione consente di leggere la Via Appia come controparte italiana dello Shudao nella categoria delle vie storiche e delle infrastrutture culturali del movimento.": "The inscription allows the Via Appia to be read as the Italian counterpart to Shudao in the category of historic routes and cultural infrastructures of movement.",
-  "Contesto istituzionale": "Institutional context",
-  "Dialogo istituzionale Cina–Italia e cooperazione culturale": "China–Italy institutional dialogue and cultural cooperation",
-  "Il quadro politico e diplomatico bilaterale fornisce uno sfondo recente alla lettura dei gemellaggi e delle collaborazioni culturali tra patrimoni cinesi e italiani.": "The bilateral political and diplomatic framework provides a recent background for reading twinnings and cultural collaborations between Chinese and Italian heritage sites.",
-  "cornice istituzionale della rete.": "institutional framework of the network.",
-  "Fonte: gov.cn": "Source: gov.cn",
-  "Gemellaggio territoriale": "Territorial twinning",
-  "Procida e Dujiangyan come esempio di continuità degli scambi": "Procida and Dujiangyan as an example of continuity in exchanges",
-  "Questo caso non fa parte dei sei item principali, ma mostra che la logica del gemellaggio e della cooperazione territoriale Cina–Italia continua ad avere attualità.": "This case is not part of the six main items, but it shows that the logic of China–Italy twinning and territorial cooperation remains current.",
-  "fonte di contesto, non item principale.": "contextual source, not a main item.",
-  "Mostra": "Exhibition",
-  "L’evento espositivo rende visibile la coppia Palazzo d’Estate–Villa d’Este non solo come confronto tra siti, ma come relazione culturale attivata attraverso pratiche curatoriali e pubbliche.": "The exhibition event makes the Summer Palace–Villa d’Este pair visible not only as a comparison between sites, but also as a cultural relation activated through curatorial and public practices.",
-  "La cronologia non pretende di ricostruire l’intera storia delle relazioni culturali Cina–Italia. Seleziona invece i nodi temporali più utili per comprendere la collezione digitale: i sei item principali, le tre relazioni interpretative, le fonti istituzionali e gli eventi collegati.": "The chronology does not attempt to reconstruct the entire history of China–Italy cultural relations. Instead, it selects the temporal nodes most useful for understanding the digital collection: the six main items, the three interpretive relations, institutional sources and related events.",
-  "Dati | Patrimoni in Dialogo": "Data | Heritages in Dialogue",
-  "/ Dati": "/ Data",
-  "Dati strutturati e authority records": "Structured Data and Authority Records",
-  "La pagina esplicita il modello dati: ogni item è composto da dato + metadati, collegamenti a fonti autorevoli e riconciliazione con record esterni.": "This page makes the data model explicit: each item consists of data plus metadata, links to authoritative sources and reconciliation with external records.",
-  "Nome": "Name",
-  "Luogo": "Place",
-  "Tipo": "Type",
-  "Status": "Status",
-  "Anno": "Year",
-  "Criteri": "Criteria",
-  "Coordinate": "Coordinates",
-  "Fonte": "Source",
-  "via storica / cultural route": "historic route / cultural route",
-  "2015 tentative": "2015 tentative",
-  "proposti: culturali": "proposed: cultural",
-  "giardino imperiale": "imperial garden",
-  "villa e giardino rinascimentale": "Renaissance villa and garden",
-  "giardini classici": "classical gardens",
-  "1997, estensione 2000": "1997, extension 2000",
-  "città lagunare / paesaggio culturale": "lagoon city / cultural landscape",
-  "Modello Dublin Core usato": "Dublin Core model used",
-  "Crediti immagini principali": "Main image credits",
-  "Le fotografie sostituiscono le illustrazioni locali e sono documentate come fonti esterne indicate dall’autrice del progetto.": "The photographs replace the local illustrations and are documented as external sources indicated by the project author.",
-  "Item": "Item",
-  "Fonte / licenza indicata": "Source / indicated licence",
-  "Fonte immagine: Wikimedia Commons, indicata tramite Bing Images. Licenza indicata dall’utente: free to modify, share and use.": "Image source: Wikimedia Commons, indicated via Bing Images. Licence indicated by the user: free to modify, share and use.",
-  "Fonte immagine: Flickr, indicata tramite Bing Images. Licenza indicata dall’utente: free to modify, share and use.": "Image source: Flickr, indicated via Bing Images. Licence indicated by the user: free to modify, share and use.",
-  "Fonte immagine: Viaggia e Scopri, indicata tramite Bing Images. Licenza indicata dall’utente: free to modify, share and use.": "Image source: Viaggia e Scopri, indicated via Bing Images. Licence indicated by the user: free to modify, share and use.",
-  "Fonte immagine: Canal Grande Venezia, indicata tramite Bing Images. Licenza indicata dall’utente: free to modify, share and use.": "Image source: Canal Grande Venezia, indicated via Bing Images. Licence indicated by the user: free to modify, share and use.",
-  "Componenti | Patrimoni in Dialogo": "Components | Heritages in Dialogue",
-  "/ Componenti": "/ Components",
-  "Componenti implementati": "Implemented Components",
-  "Questa pagina serve per l’orale: elenca i componenti HTML/CSS/JS usati e il loro ruolo nel progetto.": "This page is useful for the oral presentation: it lists the HTML/CSS/JS components used and their role in the project.",
-  "1. Responsive top navigation": "1. Responsive top navigation",
-  "Navbar responsive con menu mobile, dropdown degli item e link a tutte le pagine.": "Responsive navbar with mobile menu, item dropdown and links to all pages.",
-  "2. Cards catalogo": "2. Catalogue cards",
-  "Card per la navigazione del catalogo; ogni card contiene immagine, status, tema e pulsante verso la scheda item.": "Cards for catalogue navigation; each card contains an image, status, theme and button leading to the item record.",
-  "3. Search/filter": "3. Search/filter",
-  "Filtro JavaScript per catalogo e tabella dati.": "JavaScript filter for the catalogue and data table.",
-  "4. Modal": "4. Modal",
-  "Finestra modale nella home per spiegare l’idea progettuale senza abbandonare la pagina.": "Modal window on the home page to explain the project idea without leaving the page.",
-  "5. Accordion": "5. Accordion",
-  "Componente espandibile usato qui per descrivere gli elementi tecnici.": "Expandable component used here to describe the technical elements.",
-  "6. Tabs e slideshow": "6. Tabs and slideshow",
-  "Usati nelle schede item per distinguere descrizione, relazione, metadata e fonti; slideshow per la visualizzazione iconografica.": "Used in the item records to distinguish description, relation, metadata and sources; slideshow for iconographic display.",
-  "7. Developer tool": "7. Developer tool",
-  "Integrazione di OpenStreetMap tramite iframe; file CSV/JSON/XML usabili come dati del progetto; GitHub Pages previsto per hosting.": "Integration of OpenStreetMap through iframes; CSV/JSON/XML files usable as project data; GitHub Pages intended for hosting.",
-  "Per la presentazione:": "For the presentation:",
-  "puoi dire che il sito usa HTML5, CSS, JavaScript vanilla, metadati Dublin Core in head, XML/DC, un esempio TEI e riconciliazione tramite UNESCO/Wikidata/GeoNames.": "you can say that the site uses HTML5, CSS, vanilla JavaScript, Dublin Core metadata in the head, XML/DC, a TEI example and reconciliation through UNESCO/Wikidata/GeoNames.",
-  "Mappa | Patrimoni in Dialogo": "Map | Heritages in Dialogue",
-  "/ Mappa": "/ Map",
-  "Questa pagina presenta una mappa eurasiatica locale più chiara, con confini nazionali e coste, e conserva sotto le sei mappe dettagliate OpenStreetMap. Le stelle indicano i sei patrimoni; le linee curve evidenziano i tre gemellaggi Cina–Italia.": "This page presents a clearer local Eurasian map with national borders and coastlines, while keeping the six detailed OpenStreetMap maps below. The stars indicate the six heritage sites; the curved lines highlight the three China–Italy twinnings.",
-  "Mappa locale di orientamento: le stelle sono riposizionate sui rispettivi contesti geografici reali; per il dettaglio puntuale consultare le mappe OpenStreetMap sotto.": "Local orientation map: the stars have been repositioned within their respective real geographic contexts; for precise details, consult the OpenStreetMap maps below.",
-  "Interazioni disponibili: hover sulle stelle, click su ogni stella, click sulle curve di gemellaggio, movimento leggero della mappa al passaggio del mouse. Le mappe dettagliate sottostanti usano OpenStreetMap e richiedono connessione internet.": "Available interactions: hover over the stars, click each star, click the twinning curves, and slight map movement on mouseover. The detailed maps below use OpenStreetMap and require an internet connection.",
-  "Shudao 蜀道 ↔ Via Appia": "Shudao 蜀道 ↔ Via Appia",
-  "Due vie storiche che trasformano il territorio in infrastruttura culturale: passaggi montani, tracciati militari, commercio e memoria del movimento.": "Two historic routes that transform territory into cultural infrastructure: mountain passes, military routes, trade and the memory of movement.",
-  "Due paesaggi d’acqua e potere: il giardino come dispositivo estetico, politico e simbolico.": "Two landscapes of water and power: the garden as an aesthetic, political and symbolic device.",
-  "Due culture urbane dell’acqua: canali, giardini, laguna, forme di vita e immaginari della città liquida.": "Two urban cultures of water: canals, gardens, lagoon, forms of life and imaginaries of the liquid city.",
-  "Queste sei mappe localizzano ogni item separatamente. Sono mantenute come secondo livello di consultazione, più preciso rispetto alla mappa eurasiatica di sintesi.": "These six maps locate each item separately. They are kept as a second consultation level, more precise than the synthetic Eurasian map.",
-  "Apri in OpenStreetMap": "Open in OpenStreetMap",
-  "Fotografia principale dell’item.": "Main photograph of the item.",
-  "Fonte immagine": "Image source",
-  "Coordinate e localizzazione sintetica.": "Coordinates and synthetic location.",
-  "Descrizione": "Description",
-  "Metadati": "Metadata",
-  "Fonti": "Sources",
-  "Contesto": "Context",
-  "Status:": "Status:",
-  "In relazione con:": "In relation with:",
-  "Oggetti correlati": "Related objects",
-  "File metadati": "Metadata files",
-  "Identificatore": "Identifier",
-  "Titolo": "Title",
-  "Tipologia": "Typology",
-  "Scheda UNESCO / Tentative List": "UNESCO / Tentative List record",
-  "Wikidata authority record": "Wikidata authority record",
-  "GeoNames / luogo": "GeoNames / place",
-  "Apri la mappa dettagliata in OpenStreetMap": "Open the detailed map in OpenStreetMap",
-  "Lo Shudao è un sistema di strade antiche che collega la Cina centrale con il Sichuan attraverso aree montane complesse. Nel progetto è trattato come caso cinese di via storica e come patrimonio in Lista Tentativa UNESCO.": "Shudao is a system of ancient roads connecting central China with Sichuan through complex mountainous areas. In the project it is treated as a Chinese case of a historic route and as a heritage resource in the UNESCO Tentative List.",
-  "Il valore interpretativo principale è la relazione tra infrastruttura, paesaggio montano, circolazione politica e scambi culturali. Il sito consente di ragionare sul patrimonio non come monumento isolato, ma come rete di percorsi, passaggi e relazioni territoriali.": "Its main interpretive value lies in the relation between infrastructure, mountain landscape, political circulation and cultural exchanges. The site allows heritage to be considered not as an isolated monument, but as a network of routes, passages and territorial relations.",
-  "Il dialogo con la Via Appia evidenzia due modelli di strada storica: una via montana cinese segnata da passaggi, fortificazioni e adattamento al paesaggio; una via romana progettata come infrastruttura lineare di espansione, controllo e comunicazione.": "The dialogue with the Via Appia highlights two models of historic road: a Chinese mountain route marked by passages, fortifications and adaptation to the landscape; and a Roman road designed as a linear infrastructure of expansion, control and communication.",
-  "Apri item correlato: Via Appia. Regina Viarum": "Open related item: Via Appia. Regina Viarum",
-  "La Via Appia, costruita e sviluppata a partire dal 312 a.C., fu concepita come asse strategico e divenne una infrastruttura decisiva per la crescita urbana, la produzione agricola e gli scambi. Il sito seriale UNESCO comprende tratti, monumenti, resti archeologici e paesaggi legati alla strada.": "The Via Appia, built and developed from 312 BCE onwards, was conceived as a strategic axis and became a decisive infrastructure for urban growth, agricultural production and exchange. The UNESCO serial site includes road sections, monuments, archaeological remains and landscapes linked to the road.",
-  "Nel progetto rappresenta il patrimonio lineare come infrastruttura storica, tecnologia della mobilità e forma materiale del potere romano.": "In the project it represents linear heritage as historical infrastructure, technology of mobility and material form of Roman power.",
-  "La relazione con lo Shudao permette di confrontare due antiche vie di lunga durata e di riflettere su come strade, passaggi, territori e memorie siano trasformati in patrimonio culturale.": "The relation with Shudao makes it possible to compare two ancient long-lasting routes and to reflect on how roads, passages, territories and memories are transformed into cultural heritage.",
-  "Apri item correlato: Shudao 蜀道": "Open related item: Shudao 蜀道",
-  "Il Palazzo d’Estate fu costruito a partire dal XVIII secolo, distrutto in larga parte nel 1860 e restaurato nel 1886. UNESCO lo descrive come capolavoro della progettazione del giardino paesaggistico cinese, fondato sulla combinazione tra elementi naturali e artificiali.": "The Summer Palace was built from the eighteenth century onwards, largely destroyed in 1860 and restored in 1886. UNESCO describes it as a masterpiece of Chinese landscape garden design, based on the combination of natural and artificial elements.",
-  "Nel progetto rappresenta il rapporto tra paesaggio naturale e artificio architettonico, tra potere imperiale, estetica del giardino e armonia tra uomo e natura.": "In the project it represents the relation between natural landscape and architectural artifice, imperial power, garden aesthetics and harmony between human beings and nature.",
-  "Il gemellaggio con Villa d’Este permette di costruire un asse comparativo tra due giardini d’acqua: Kunming Lake e le fontane di Tivoli funzionano come dispositivi paesaggistici, estetici e simbolici.": "The twinning with Villa d’Este makes it possible to build a comparative axis between two water gardens: Kunming Lake and the fountains of Tivoli function as landscape, aesthetic and symbolic devices.",
-  "Apri item correlato: Villa d’Este": "Open related item: Villa d’Este",
-  "Villa d’Este a Tivoli è uno degli esempi più completi della cultura rinascimentale italiana. Il giardino, con fontane, bacini ornamentali e dispositivi idraulici, è considerato da UNESCO un esempio unico di giardino italiano del XVI secolo.": "Villa d’Este in Tivoli is one of the most complete examples of Italian Renaissance culture. Its garden, with fountains, ornamental basins and hydraulic devices, is considered by UNESCO a unique example of a sixteenth-century Italian garden.",
-  "Nel progetto rappresenta il giardino come architettura dell’acqua, della meraviglia e della scenografia, ma anche come patrimonio che comunica il rapporto tra tecnica, natura e potere.": "In the project it represents the garden as architecture of water, wonder and scenography, but also as heritage communicating the relation between technique, nature and power.",
-  "Il dialogo con il Palazzo d’Estate mette in evidenza una comune centralità dell’acqua, pur in due sistemi culturali diversi: paesaggio imperiale cinese e giardino rinascimentale italiano.": "The dialogue with the Summer Palace highlights the shared centrality of water, even within two different cultural systems: Chinese imperial landscape and Italian Renaissance garden.",
-  "Apri item correlato: Palazzo d’Estate 颐和园": "Open related item: Summer Palace 颐和园",
-  "I giardini classici di Suzhou hanno radici storiche antiche e raggiunsero particolare complessità tra il XVI e il XVIII secolo. Essi trasformano spazi urbani limitati in paesaggi concentrati, combinando acqua, rocce, padiglioni, vegetazione e percorsi visivi.": "The Classical Gardens of Suzhou have ancient historical roots and reached particular complexity between the sixteenth and eighteenth centuries. They transform limited urban spaces into concentrated landscapes, combining water, rocks, pavilions, vegetation and visual paths.",
-  "Nel progetto rappresentano la miniaturizzazione del paesaggio, la relazione fra città, acqua e spazio privato, e la capacità del giardino di produrre esperienza estetica e culturale.": "In the project they represent the miniaturisation of landscape, the relation between city, water and private space, and the garden’s ability to produce aesthetic and cultural experience.",
-  "Il confronto con Venezia e la sua Laguna consente di leggere due culture urbane dell’acqua: Suzhou come città dei giardini e dei canali, Venezia come sistema urbano-lagunare.": "The comparison with Venice and its Lagoon allows two urban cultures of water to be read together: Suzhou as a city of gardens and canals, Venice as an urban-lagoon system.",
-  "Apri item correlato: Venezia e la sua Laguna": "Open related item: Venice and its Lagoon",
-  "Venezia e la sua Laguna costituiscono un sistema patrimoniale nel quale città, isole, acqua, architetture e pratiche storiche sono inseparabili. UNESCO sottolinea l’integrità del rapporto tra insediamento umano e ambiente lagunare.": "Venice and its Lagoon form a heritage system in which city, islands, water, architecture and historical practices are inseparable. UNESCO emphasises the integrity of the relationship between human settlement and the lagoon environment.",
-  "Nel progetto rappresenta il patrimonio come ecosistema storico e urbano, fragile e complesso, in cui la conservazione riguarda insieme architettura, ambiente, mobilità e vita sociale.": "In the project it represents heritage as a historical and urban ecosystem, fragile and complex, where conservation concerns architecture, environment, mobility and social life together.",
-  "Il dialogo con Suzhou permette di accostare due immagini di città d’acqua: Venezia come città-laguna e Suzhou come città dei giardini e dei canali.": "The dialogue with Suzhou brings together two images of water cities: Venice as a lagoon city and Suzhou as a city of gardens and canals.",
-  "Apri item correlato: Giardini classici di Suzhou 苏州古典园林": "Open related item: Classical Gardens of Suzhou 苏州古典园林"
+"Salta al contenuto": "Skip to content",
+"Menu": "Menu",
+"Digital Humanities · Patrimonio Culturale · Cina–Italia": "Digital Humanities · Cultural Heritage · China–Italy",
+"Le tre coppie patrimoniali di questo sito non nascono come semplici somiglianze visive: si collocano nel quadro più ampio della cooperazione culturale tra Cina e Italia, costruita attraverso dialoghi istituzionali, forum dedicati ai siti UNESCO e pratiche di gemellaggio fra siti e città.": "The three heritage pairs in this site are not based merely on visual resemblance; they are situated within the broader framework of China–Italy cultural cooperation, built through institutional dialogues, forums dedicated to UNESCO sites, and twinning practices between sites and cities.",
+"In questo progetto il": "In this project,",
+"gemellaggio": "twinning",
+"è inteso come una relazione di cooperazione, confronto e reciproca valorizzazione. Il sito traduce questa cornice in una collezione digitale strutturata, fatta di": "is understood as a relation of cooperation, comparison and mutual valorisation. The site translates this framework into a structured digital collection made of",
+"item, metadati, fonti autorevoli, coordinate geografiche e relazioni tipizzate": "items, metadata, authoritative sources, geographic coordinates and typed relations",
+"Dallo storico rapporto Venezia–Suzhou fino a esempi più recenti come Procida–Dujiangyan, la cooperazione si sviluppa anche a livello civico e territoriale. Secondo il Ministero degli Affari Esteri della Repubblica Popolare Cinese, ad aprile 2026 Cina e Italia hanno stabilito": "From the historical Venice–Suzhou relationship to more recent cases such as Procida–Dujiangyan, cooperation also develops at civic and territorial levels. According to the Ministry of Foreign Affairs of the People’s Republic of China, as of April 2026 China and Italy had established",
+"91 coppie di relazioni amichevoli": "91 pairs of friendly relations",
+"tra province, città e regioni.": "between provinces, cities and regions.",
+"Il tema della cooperazione culturale rientra nel quadro dei rapporti bilaterali Cina–Italia, rafforzando lo sfondo istituzionale entro cui leggere i gemellaggi patrimoniali.": "Cultural cooperation belongs to the framework of China–Italy bilateral relations and strengthens the institutional background for reading heritage twinnings.",
+"Forum Cina–Italia per i gemellaggi tra i siti del patrimonio culturale mondiale UNESCO": "China–Italy Forum for Twinnings between UNESCO World Heritage Sites",
+"approfondisce il dialogo tra istituzioni, esperti e territori.": "deepens the dialogue among institutions, experts and territories.",
+"Forum Culturale Italia–Cina": "Italy–China Cultural Forum",
+"rilancia il dialogo tra i siti UNESCO dei due Paesi e presenta il gemellaggio come strumento di confronto culturale e promozione condivisa.": "relaunches dialogue between the UNESCO sites of the two countries and presents twinning as a tool for cultural comparison and shared promotion.",
+"lo": "",
+"è trattato correttamente come risorsa in": "is correctly treated as a resource in",
+", non come sito già iscritto. Per questo la relazione con la": "rather than as an already inscribed site. For this reason, the relation with",
+"è usata soprattutto come confronto interpretativo nel quadro generale dei gemellaggi Cina–Italia.": "is used mainly as an interpretive comparison within the broader framework of China–Italy twinnings.",
+"Cornice politica": "Political framework",
+"Colloquio dei capi e cooperazione bilaterale": "Leaders’ meeting and bilateral cooperation",
+"Il dialogo tra i vertici istituzionali fornisce il quadro politico entro cui si collocano anche gli scambi culturali e patrimoniali tra Cina e Italia.": "Dialogue at the highest institutional level provides the political framework for cultural and heritage exchanges between China and Italy.",
+"Fonte ufficiale: Governo cinese / gov.cn": "Official source: Chinese Government / gov.cn",
+"UNESCO Italia": "UNESCO Italy",
+"Il Forum Culturale Italia–Cina lancia il gemellaggio tra i siti UNESCO": "The Italy–China Cultural Forum launches twinning between UNESCO sites",
+"Uno dei passaggi chiave per la costruzione di una rete di relazioni tra patrimoni dei due Paesi.": "One of the key steps in building a network of relations between the two countries’ heritage sites.",
+"Fonte: Commissione Nazionale Italiana per l’UNESCO": "Source: Italian National Commission for UNESCO",
+"Forum Cina–Italia per i gemellaggi tra i siti UNESCO": "China–Italy Forum for Twinnings between UNESCO Sites",
+"Il forum di Hangzhou consolida lo scambio di esperienze e di pratiche di tutela tra siti patrimoniali cinesi e italiani.": "The Hangzhou Forum consolidates the exchange of experiences and conservation practices between Chinese and Italian heritage sites.",
+"Fonte: China News / 凤凰网": "Source: China News / ifeng.com",
+"Caso studio": "Case study",
+"Siti UNESCO": "UNESCO sites",
+"Villa d’Este ↔ Palazzo d’Estate": "Villa d’Este ↔ Summer Palace",
+"Shudao ↔ Via Appia": "Shudao ↔ Via Appia",
+"Palazzo d’Estate ↔ Villa d’Este": "Summer Palace ↔ Villa d’Este",
+"Giardini di Suzhou ↔ Venezia": "Classical Gardens of Suzhou ↔ Venice",
+"Suzhou ↔ Venezia": "Suzhou ↔ Venice",
+"Un gemellaggio esplicitamente formulato tra due paesaggi d’acqua e di rappresentazione del potere.": "An explicitly formulated twinning between two water landscapes and representations of power.",
+"Fonte: Visit Lazio": "Source: Visit Lazio",
+"Mostra / evento": "Exhibition / event",
+"Dove il cielo incontra l’umano: il Palazzo d’Estate di Pechino a Villa d’Este": "Where Heaven Meets the Human: Beijing Summer Palace at Villa d’Este",
+"Questa iniziativa espositiva rende visibile il dialogo culturale tra i due siti anche sul piano curatoriale e pubblico, trasformando il gemellaggio in esperienza culturale condivisa.": "This exhibition initiative makes the cultural dialogue between the two sites visible at the curatorial and public level, transforming twinning into a shared cultural experience.",
+"Fonte: Artribune": "Source: Artribune",
+"Gemellaggio civico": "Civic twinning",
+"Suzhou ↔ Venezia": "Suzhou ↔ Venice",
+"Il rapporto tra Suzhou e Venezia mostra come la cooperazione Cina–Italia passi anche attraverso legami urbani di lunga durata.": "The relation between Suzhou and Venice shows how China–Italy cooperation also operates through long-standing urban links.",
+"Fonte ufficiale: Comune di Venezia": "Official source: City of Venice",
+"Esempio recente": "Recent example",
+"Procida ↔ Dujiangyan": "Procida ↔ Dujiangyan",
+"Un esempio recente di gemellaggio territoriale che rende visibile la continuità e l’attualità degli scambi culturali tra i due Paesi.": "A recent example of territorial twinning that makes visible the continuity and current relevance of cultural exchanges between the two countries.",
+"Fonte: notizia illustrativa fornita dall’utente": "Source: illustrative news item provided by the user",
+"Sistema antico di vie montane tra Cina centrale e Sichuan": "Ancient system of mountain routes between central China and Sichuan",
+"La più antica e importante delle grandi strade romane": "The oldest and most important of the great Roman roads",
+"Giardino imperiale di Pechino e capolavoro del paesaggio cinese": "Imperial garden in Beijing and masterpiece of Chinese landscape design",
+"Giardino rinascimentale italiano e giardino d’acqua": "Italian Renaissance garden and water garden",
+"Sistema di giardini storici privati nella città di Suzhou": "System of historic private gardens in the city of Suzhou",
+"Città lagunare, sistema insulare e paesaggio culturale": "Lagoon city, island system and cultural landscape",
+"Card filtrabili per paese e ricerca libera.": "Cards filterable by country and free search.",
+"Punti geografici, mappe OSM e navigazione spaziale.": "Geographic points, OSM maps and spatial navigation.",
+"Tabella strutturata, CSV, JSON, XML/DC e TEI.": "Structured table, CSV, JSON, XML/DC and TEI.",
+"costruisce una piccola collezione digitale dedicata ai rapporti culturali fra patrimoni cinesi e italiani. Ogni item è descritto attraverso metadati, fonti, coordinate e relazioni con altri item.": "builds a small digital collection dedicated to cultural relations between Chinese and Italian heritage sites. Each item is described through metadata, sources, coordinates and relations with other items.",
+"La domanda guida è: come trasformare gemellaggi e analogie patrimoniali in un sistema navigabile di dati, relazioni e interpretazioni?": "The guiding question is: how can heritage twinnings and analogies be transformed into a navigable system of data, relations and interpretations?",
+"File dati:": "Data files:",
+"/ Catalogo": "/ Catalogue",
+"Timeline della collezione | Patrimoni in Dialogo": "Collection Timeline | Heritages in Dialogue",
+"/ Timeline": "/ Timeline",
+"Questa pagina non raccoglie semplicemente notizie: propone una navigazione temporale integrata tra iscrizioni UNESCO, gemellaggi, forum culturali, fonti istituzionali ed eventi collegati. I nodi sono ordinati cronologicamente e collegano i sei item principali alle relazioni interpretative del progetto.": "This page does not simply collect news: it offers integrated temporal navigation across UNESCO inscriptions, twinnings, cultural forums, institutional sources and related events. The nodes are ordered chronologically and connect the six main items to the project’s interpretive relations.",
+"Heritage / UNESCO": "Heritage / UNESCO",
+"Gemellaggio / relazione": "Twinning / relation",
+"Forum / istituzioni": "Forum / institutions",
+"Evento / fonte": "Event / source",
+"La timeline funziona come un secondo metodo di accesso alla collezione, accanto al catalogo e alla mappa. Ogni nodo indica un momento rilevante per capire come i patrimoni, le fonti e le relazioni Cina–Italia entrano nella struttura digitale del sito.": "The timeline functions as a second access method to the collection, alongside the catalogue and the map. Each node marks a relevant moment for understanding how the heritage sites, sources and China–Italy relations enter the digital structure of the website.",
+"Fonte istituzionale": "Institutional source",
+"Venezia e Suzhou stabiliscono un rapporto di gemellaggio": "Venice and Suzhou establish a twinning relationship",
+"Il rapporto tra Venezia e Suzhou offre una base storica alla coppia interpretativa “città d’acqua”: due spazi urbani segnati da canali, ponti, mobilità acquea e immaginari lagunari.": "The relationship between Venice and Suzhou provides a historical basis for the interpretive pair “water cities”: two urban spaces shaped by canals, bridges, water mobility and lagoon imaginaries.",
+"Relazione:": "Relation:",
+"Fonte: Comune di Venezia": "Source: City of Venice",
+"Patrimonio iscritto": "Inscribed heritage",
+"Venezia e la sua Laguna entra nella World Heritage List": "Venice and its Lagoon enters the World Heritage List",
+"L’iscrizione riconosce il valore culturale del sistema urbano-lagunare veneziano, centrale per la coppia Suzhou–Venezia.": "The inscription recognises the cultural value of Venice’s urban-lagoon system, central to the Suzhou–Venice pair.",
+"Item collegato:": "Linked item:",
+"Fonte UNESCO": "UNESCO source",
+"I Giardini classici di Suzhou entrano nella World Heritage List": "The Classical Gardens of Suzhou enter the World Heritage List",
+"L’iscrizione valorizza la tradizione dei giardini privati cinesi, intesi come microcosmi poetici di acqua, roccia, architettura e vita letteraria.": "The inscription highlights the tradition of Chinese private gardens, understood as poetic microcosms of water, rock, architecture and literati life.",
+"Il Palazzo d’Estate di Pechino entra nella World Heritage List": "The Summer Palace in Beijing enters the World Heritage List",
+"Il sito viene riconosciuto come capolavoro del giardino paesaggistico cinese, fondato sul dialogo tra lago, collina, architettura e paesaggio simbolico.": "The site is recognised as a masterpiece of Chinese landscape garden design, based on the dialogue between lake, hill, architecture and symbolic landscape.",
+"Villa d’Este, Tivoli entra nella World Heritage List": "Villa d’Este, Tivoli enters the World Heritage List",
+"L’iscrizione riconosce l’eccezionale valore del giardino rinascimentale e del suo sistema scenografico di fontane, acqua e architettura.": "The inscription recognises the outstanding value of the Renaissance garden and its scenic system of fountains, water and architecture.",
+"Questo nodo introduce il gemellaggio come dispositivo culturale e istituzionale: non solo somiglianza estetica tra luoghi, ma forma di cooperazione e promozione reciproca.": "This node introduces twinning as a cultural and institutional device: not only aesthetic similarity between places, but a form of cooperation and mutual promotion.",
+"Funzione nel progetto:": "Function in the project:",
+"contesto istituzionale dei gemellaggi patrimoniali.": "institutional context for heritage twinnings.",
+"Lista Tentativa": "Tentative List",
+"Status patrimoniale": "Heritage status",
+"Shudao è documentato nella Lista Tentativa UNESCO": "Shudao is documented in the UNESCO Tentative List",
+"Nel progetto lo Shudao non viene presentato come sito già iscritto, ma come risorsa in Lista Tentativa. Questa distinzione rende più corretta la relazione interpretativa con la Via Appia.": "In the project, Shudao is not presented as an already inscribed site, but as a Tentative List resource. This distinction makes the interpretive relation with the Via Appia more accurate.",
+"Cooperazione culturale": "Cultural cooperation",
+"Il forum di Hangzhou rafforza il dialogo tra istituzioni, esperti e territori. Nel progetto funziona come snodo tra le relazioni già esistenti e le nuove coppie patrimoniali.": "The Hangzhou Forum strengthens dialogue among institutions, experts and territories. In the project, it functions as a link between existing relations and new heritage pairs.",
+"Relazioni richiamate:": "Relations recalled:",
+"Palazzo d’Estate ↔ Villa d’Este; Suzhou ↔ Venezia.": "Summer Palace ↔ Villa d’Este; Suzhou ↔ Venice.",
+"La Via Appia. Regina Viarum entra nella World Heritage List": "The Via Appia. Regina Viarum enters the World Heritage List",
+"L’iscrizione consente di leggere la Via Appia come controparte italiana dello Shudao nella categoria delle vie storiche e delle infrastrutture culturali del movimento.": "The inscription allows the Via Appia to be read as the Italian counterpart to Shudao in the category of historic routes and cultural infrastructures of movement.",
+"Contesto istituzionale": "Institutional context",
+"Dialogo istituzionale Cina–Italia e cooperazione culturale": "China–Italy institutional dialogue and cultural cooperation",
+"Il quadro politico e diplomatico bilaterale fornisce uno sfondo recente alla lettura dei gemellaggi e delle collaborazioni culturali tra patrimoni cinesi e italiani.": "The bilateral political and diplomatic framework provides a recent background for reading twinnings and cultural collaborations between Chinese and Italian heritage sites.",
+"cornice istituzionale della rete.": "institutional framework of the network.",
+"Fonte: gov.cn": "Source: gov.cn",
+"Gemellaggio territoriale": "Territorial twinning",
+"Procida e Dujiangyan come esempio di continuità degli scambi": "Procida and Dujiangyan as an example of continuity in exchanges",
+"Questo caso non fa parte dei sei item principali, ma mostra che la logica del gemellaggio e della cooperazione territoriale Cina–Italia continua ad avere attualità.": "This case is not part of the six main items, but it shows that the logic of China–Italy twinning and territorial cooperation remains current.",
+"fonte di contesto, non item principale.": "contextual source, not a main item.",
+"Mostra": "Exhibition",
+"L’evento espositivo rende visibile la coppia Palazzo d’Estate–Villa d’Este non solo come confronto tra siti, ma come relazione culturale attivata attraverso pratiche curatoriali e pubbliche.": "The exhibition event makes the Summer Palace–Villa d’Este pair visible not only as a comparison between sites, but also as a cultural relation activated through curatorial and public practices.",
+"La cronologia non pretende di ricostruire l’intera storia delle relazioni culturali Cina–Italia. Seleziona invece i nodi temporali più utili per comprendere la collezione digitale: i sei item principali, le tre relazioni interpretative, le fonti istituzionali e gli eventi collegati.": "The chronology does not attempt to reconstruct the entire history of China–Italy cultural relations. Instead, it selects the temporal nodes most useful for understanding the digital collection: the six main items, the three interpretive relations, institutional sources and related events.",
+"Dati | Patrimoni in Dialogo": "Data | Heritages in Dialogue",
+"/ Dati": "/ Data",
+"Dati strutturati e authority records": "Structured Data and Authority Records",
+"La pagina esplicita il modello dati: ogni item è composto da dato + metadati, collegamenti a fonti autorevoli e riconciliazione con record esterni.": "This page makes the data model explicit: each item consists of data plus metadata, links to authoritative sources and reconciliation with external records.",
+"Nome": "Name",
+"Luogo": "Place",
+"Tipo": "Type",
+"Status": "Status",
+"Anno": "Year",
+"Criteri": "Criteria",
+"Coordinate": "Coordinates",
+"Fonte": "Source",
+"via storica / cultural route": "historic route / cultural route",
+"2015 tentative": "2015 tentative",
+"proposti: culturali": "proposed: cultural",
+"giardino imperiale": "imperial garden",
+"villa e giardino rinascimentale": "Renaissance villa and garden",
+"giardini classici": "classical gardens",
+"1997, estensione 2000": "1997, extension 2000",
+"città lagunare / paesaggio culturale": "lagoon city / cultural landscape",
+"Modello Dublin Core usato": "Dublin Core model used",
+"Crediti immagini principali": "Main image credits",
+"Le fotografie sostituiscono le illustrazioni locali e sono documentate come fonti esterne indicate dall’autrice del progetto.": "The photographs replace the local illustrations and are documented as external sources indicated by the project author.",
+"Item": "Item",
+"Fonte / licenza indicata": "Source / indicated licence",
+"Fonte immagine: Wikimedia Commons, indicata tramite Bing Images. Licenza indicata dall’utente: free to modify, share and use.": "Image source: Wikimedia Commons, indicated via Bing Images. Licence indicated by the user: free to modify, share and use.",
+"Fonte immagine: Flickr, indicata tramite Bing Images. Licenza indicata dall’utente: free to modify, share and use.": "Image source: Flickr, indicated via Bing Images. Licence indicated by the user: free to modify, share and use.",
+"Fonte immagine: Viaggia e Scopri, indicata tramite Bing Images. Licenza indicata dall’utente: free to modify, share and use.": "Image source: Viaggia e Scopri, indicated via Bing Images. Licence indicated by the user: free to modify, share and use.",
+"Fonte immagine: Canal Grande Venezia, indicata tramite Bing Images. Licenza indicata dall’utente: free to modify, share and use.": "Image source: Canal Grande Venezia, indicated via Bing Images. Licence indicated by the user: free to modify, share and use.",
+"Componenti | Patrimoni in Dialogo": "Components | Heritages in Dialogue",
+"/ Componenti": "/ Components",
+"Componenti implementati": "Implemented Components",
+"Questa pagina serve per l’orale: elenca i componenti HTML/CSS/JS usati e il loro ruolo nel progetto.": "This page is useful for the oral presentation: it lists the HTML/CSS/JS components used and their role in the project.",
+"1. Responsive top navigation": "1. Responsive top navigation",
+"Navbar responsive con menu mobile, dropdown degli item e link a tutte le pagine.": "Responsive navbar with mobile menu, item dropdown and links to all pages.",
+"2. Cards catalogo": "2. Catalogue cards",
+"Card per la navigazione del catalogo; ogni card contiene immagine, status, tema e pulsante verso la scheda item.": "Cards for catalogue navigation; each card contains an image, status, theme and button leading to the item record.",
+"3. Search/filter": "3. Search/filter",
+"Filtro JavaScript per catalogo e tabella dati.": "JavaScript filter for the catalogue and data table.",
+"4. Modal": "4. Modal",
+"Finestra modale nella home per spiegare l’idea progettuale senza abbandonare la pagina.": "Modal window on the home page to explain the project idea without leaving the page.",
+"5. Accordion": "5. Accordion",
+"Componente espandibile usato qui per descrivere gli elementi tecnici.": "Expandable component used here to describe the technical elements.",
+"6. Tabs e slideshow": "6. Tabs and slideshow",
+"Usati nelle schede item per distinguere descrizione, relazione, metadata e fonti; slideshow per la visualizzazione iconografica.": "Used in the item records to distinguish description, relation, metadata and sources; slideshow for iconographic display.",
+"7. Developer tool": "7. Developer tool",
+"Integrazione di OpenStreetMap tramite iframe; file CSV/JSON/XML usabili come dati del progetto; GitHub Pages previsto per hosting.": "Integration of OpenStreetMap through iframes; CSV/JSON/XML files usable as project data; GitHub Pages intended for hosting.",
+"Per la presentazione:": "For the presentation:",
+"puoi dire che il sito usa HTML5, CSS, JavaScript vanilla, metadati Dublin Core in head, XML/DC, un esempio TEI e riconciliazione tramite UNESCO/Wikidata/GeoNames.": "you can say that the site uses HTML5, CSS, vanilla JavaScript, Dublin Core metadata in the head, XML/DC, a TEI example and reconciliation through UNESCO/Wikidata/GeoNames.",
+"Mappa | Patrimoni in Dialogo": "Map | Heritages in Dialogue",
+"/ Mappa": "/ Map",
+"Questa pagina presenta una mappa eurasiatica locale più chiara, con confini nazionali e coste, e conserva sotto le sei mappe dettagliate OpenStreetMap. Le stelle indicano i sei patrimoni; le linee curve evidenziano i tre gemellaggi Cina–Italia.": "This page presents a clearer local Eurasian map with national borders and coastlines, while keeping the six detailed OpenStreetMap maps below. The stars indicate the six heritage sites; the curved lines highlight the three China–Italy twinnings.",
+"Mappa locale di orientamento: le stelle sono riposizionate sui rispettivi contesti geografici reali; per il dettaglio puntuale consultare le mappe OpenStreetMap sotto.": "Local orientation map: the stars have been repositioned within their respective real geographic contexts; for precise details, consult the OpenStreetMap maps below.",
+"Interazioni disponibili: hover sulle stelle, click su ogni stella, click sulle curve di gemellaggio, movimento leggero della mappa al passaggio del mouse. Le mappe dettagliate sottostanti usano OpenStreetMap e richiedono connessione internet.": "Available interactions: hover over the stars, click each star, click the twinning curves, and slight map movement on mouseover. The detailed maps below use OpenStreetMap and require an internet connection.",
+"Shudao 蜀道 ↔ Via Appia": "Shudao 蜀道 ↔ Via Appia",
+"Due vie storiche che trasformano il territorio in infrastruttura culturale: passaggi montani, tracciati militari, commercio e memoria del movimento.": "Two historic routes that transform territory into cultural infrastructure: mountain passes, military routes, trade and the memory of movement.",
+"Due paesaggi d’acqua e potere: il giardino come dispositivo estetico, politico e simbolico.": "Two landscapes of water and power: the garden as an aesthetic, political and symbolic device.",
+"Due culture urbane dell’acqua: canali, giardini, laguna, forme di vita e immaginari della città liquida.": "Two urban cultures of water: canals, gardens, lagoon, forms of life and imaginaries of the liquid city.",
+"Queste sei mappe localizzano ogni item separatamente. Sono mantenute come secondo livello di consultazione, più preciso rispetto alla mappa eurasiatica di sintesi.": "These six maps locate each item separately. They are kept as a second consultation level, more precise than the synthetic Eurasian map.",
+"Apri in OpenStreetMap": "Open in OpenStreetMap",
+"Fotografia principale dell’item.": "Main photograph of the item.",
+"Fonte immagine": "Image source",
+"Coordinate e localizzazione sintetica.": "Coordinates and synthetic location.",
+"Descrizione": "Description",
+"Metadati": "Metadata",
+"Fonti": "Sources",
+"Contesto": "Context",
+"Status:": "Status:",
+"In relazione con:": "In relation with:",
+"Oggetti correlati": "Related objects",
+"File metadati": "Metadata files",
+"Identificatore": "Identifier",
+"Titolo": "Title",
+"Tipologia": "Typology",
+"Scheda UNESCO / Tentative List": "UNESCO / Tentative List record",
+"Wikidata authority record": "Wikidata authority record",
+"GeoNames / luogo": "GeoNames / place",
+"Apri la mappa dettagliata in OpenStreetMap": "Open the detailed map in OpenStreetMap",
+"Lo Shudao è un sistema di strade antiche che collega la Cina centrale con il Sichuan attraverso aree montane complesse. Nel progetto è trattato come caso cinese di via storica e come patrimonio in Lista Tentativa UNESCO.": "Shudao is a system of ancient roads connecting central China with Sichuan through complex mountainous areas. In the project it is treated as a Chinese case of a historic route and as a heritage resource in the UNESCO Tentative List.",
+"Il valore interpretativo principale è la relazione tra infrastruttura, paesaggio montano, circolazione politica e scambi culturali. Il sito consente di ragionare sul patrimonio non come monumento isolato, ma come rete di percorsi, passaggi e relazioni territoriali.": "Its main interpretive value lies in the relation between infrastructure, mountain landscape, political circulation and cultural exchanges. The site allows heritage to be considered not as an isolated monument, but as a network of routes, passages and territorial relations.",
+"Il dialogo con la Via Appia evidenzia due modelli di strada storica: una via montana cinese segnata da passaggi, fortificazioni e adattamento al paesaggio; una via romana progettata come infrastruttura lineare di espansione, controllo e comunicazione.": "The dialogue with the Via Appia highlights two models of historic road: a Chinese mountain route marked by passages, fortifications and adaptation to the landscape; and a Roman road designed as a linear infrastructure of expansion, control and communication.",
+"Apri item correlato: Via Appia. Regina Viarum": "Open related item: Via Appia. Regina Viarum",
+"La Via Appia, costruita e sviluppata a partire dal 312 a.C., fu concepita come asse strategico e divenne una infrastruttura decisiva per la crescita urbana, la produzione agricola e gli scambi. Il sito seriale UNESCO comprende tratti, monumenti, resti archeologici e paesaggi legati alla strada.": "The Via Appia, built and developed from 312 BCE onwards, was conceived as a strategic axis and became a decisive infrastructure for urban growth, agricultural production and exchange. The UNESCO serial site includes road sections, monuments, archaeological remains and landscapes linked to the road.",
+"Nel progetto rappresenta il patrimonio lineare come infrastruttura storica, tecnologia della mobilità e forma materiale del potere romano.": "In the project it represents linear heritage as historical infrastructure, technology of mobility and material form of Roman power.",
+"La relazione con lo Shudao permette di confrontare due antiche vie di lunga durata e di riflettere su come strade, passaggi, territori e memorie siano trasformati in patrimonio culturale.": "The relation with Shudao makes it possible to compare two ancient long-lasting routes and to reflect on how roads, passages, territories and memories are transformed into cultural heritage.",
+"Apri item correlato: Shudao 蜀道": "Open related item: Shudao",
+"Il Palazzo d’Estate fu costruito a partire dal XVIII secolo, distrutto in larga parte nel 1860 e restaurato nel 1886. UNESCO lo descrive come capolavoro della progettazione del giardino paesaggistico cinese, fondato sulla combinazione tra elementi naturali e artificiali.": "The Summer Palace was built from the eighteenth century onwards, largely destroyed in 1860 and restored in 1886. UNESCO describes it as a masterpiece of Chinese landscape garden design, based on the combination of natural and artificial elements.",
+"Nel progetto rappresenta il rapporto tra paesaggio naturale e artificio architettonico, tra potere imperiale, estetica del giardino e armonia tra uomo e natura.": "In the project it represents the relation between natural landscape and architectural artifice, imperial power, garden aesthetics and harmony between human beings and nature.",
+"Il gemellaggio con Villa d’Este permette di costruire un asse comparativo tra due giardini d’acqua: Kunming Lake e le fontane di Tivoli funzionano come dispositivi paesaggistici, estetici e simbolici.": "The twinning with Villa d’Este makes it possible to build a comparative axis between two water gardens: Kunming Lake and the fountains of Tivoli function as landscape, aesthetic and symbolic devices.",
+"Apri item correlato: Villa d’Este": "Open related item: Villa d’Este",
+"Villa d’Este a Tivoli è uno degli esempi più completi della cultura rinascimentale italiana. Il giardino, con fontane, bacini ornamentali e dispositivi idraulici, è considerato da UNESCO un esempio unico di giardino italiano del XVI secolo.": "Villa d’Este in Tivoli is one of the most complete examples of Italian Renaissance culture. Its garden, with fountains, ornamental basins and hydraulic devices, is considered by UNESCO a unique example of a sixteenth-century Italian garden.",
+"Nel progetto rappresenta il giardino come architettura dell’acqua, della meraviglia e della scenografia, ma anche come patrimonio che comunica il rapporto tra tecnica, natura e potere.": "In the project it represents the garden as architecture of water, wonder and scenography, but also as heritage communicating the relation between technique, nature and power.",
+"Il dialogo con il Palazzo d’Estate mette in evidenza una comune centralità dell’acqua, pur in due sistemi culturali diversi: paesaggio imperiale cinese e giardino rinascimentale italiano.": "The dialogue with the Summer Palace highlights the shared centrality of water, even within two different cultural systems: Chinese imperial landscape and Italian Renaissance garden.",
+"Apri item correlato: Palazzo d’Estate 颐和园": "Open related item: Summer Palace",
+"I giardini classici di Suzhou hanno radici storiche antiche e raggiunsero particolare complessità tra il XVI e il XVIII secolo. Essi trasformano spazi urbani limitati in paesaggi concentrati, combinando acqua, rocce, padiglioni, vegetazione e percorsi visivi.": "The Classical Gardens of Suzhou have ancient historical roots and reached particular complexity between the sixteenth and eighteenth centuries. They transform limited urban spaces into concentrated landscapes, combining water, rocks, pavilions, vegetation and visual paths.",
+"Nel progetto rappresentano la miniaturizzazione del paesaggio, la relazione fra città, acqua e spazio privato, e la capacità del giardino di produrre esperienza estetica e culturale.": "In the project they represent the miniaturisation of landscape, the relation between city, water and private space, and the garden’s ability to produce aesthetic and cultural experience.",
+"Il confronto con Venezia e la sua Laguna consente di leggere due culture urbane dell’acqua: Suzhou come città dei giardini e dei canali, Venezia come sistema urbano-lagunare.": "The comparison with Venice and its Lagoon allows two urban cultures of water to be read together: Suzhou as a city of gardens and canals, Venice as an urban-lagoon system.",
+"Apri item correlato: Venezia e la sua Laguna": "Open related item: Venice and its Lagoon",
+"Venezia e la sua Laguna costituiscono un sistema patrimoniale nel quale città, isole, acqua, architetture e pratiche storiche sono inseparabili. UNESCO sottolinea l’integrità del rapporto tra insediamento umano e ambiente lagunare.": "Venice and its Lagoon form a heritage system in which city, islands, water, architecture and historical practices are inseparable. UNESCO emphasises the integrity of the relationship between human settlement and the lagoon environment.",
+"Nel progetto rappresenta il patrimonio come ecosistema storico e urbano, fragile e complesso, in cui la conservazione riguarda insieme architettura, ambiente, mobilità e vita sociale.": "In the project it represents heritage as a historical and urban ecosystem, fragile and complex, where conservation concerns architecture, environment, mobility and social life together.",
+"Il dialogo con Suzhou permette di accostare due immagini di città d’acqua: Venezia come città-laguna e Suzhou come città dei giardini e dei canali.": "The dialogue with Suzhou brings together two images of water cities: Venice as a lagoon city and Suzhou as a city of gardens and canals.",
+"Apri item correlato: Giardini classici di Suzhou 苏州古典园林": "Open related item: Classical Gardens of Suzhou"
 });
 
 
@@ -649,6 +842,7 @@ Object.assign(I18N.zh, {
   "Italia": "意大利",
   "Cina": "中国"
 });
+
 Object.assign(I18N.en, {
   "Queste sei mappe localizzano ogni item separatamente. Sono mantenute come secondo livello di consultazione, più preciso rispetto alla mappa eurasiatica di sintesi.": "These six maps locate each item separately. They are kept as a second, more precise consultation layer beneath the synthetic Eurasian map.",
   "Sichuan / Shaanxi / Gansu · 32.231, 105.571": "Sichuan / Shaanxi / Gansu · 32.231, 105.571",
@@ -699,7 +893,7 @@ Object.assign(I18N.zh, {
   "Lo Shudao è un sistema di strade antiche che collega la Cina centrale con il Sichuan attraverso aree montane complesse. Nel progetto è trattato come caso cinese di via storica e come patrimonio in Lista Tentativa UNESCO, utile per il confronto con la Via Appia sul tema della conservazione dei patrimoni lineari.": "蜀道是一套古代道路系统，穿越复杂山地，将中国中部与四川地区连接起来。在本项目中，它被作为中国历史道路案例以及 UNESCO 预备名单遗产来处理，用于与阿皮亚古道围绕线性遗产保护问题展开比较。",
   "Il valore interpretativo principale è la relazione tra infrastruttura, paesaggio montano, circolazione politica e scambi culturali. Il sito consente di ragionare sul patrimonio non come monumento isolato, ma come rete territoriale.": "其主要解释价值在于基础设施、山地景观、政治流动与文化交流之间的关系。该遗产使我们能够将遗产理解为一种地域网络，而不是孤立的纪念物。",
   "Il dialogo con la Via Appia evidenzia due modelli di strada storica: una via montana cinese segnata da passaggi, fortificazioni e adattamento al paesaggio; una via romana progettata come infrastruttura imperiale e asse di espansione.": "与阿皮亚古道的对话凸显了两种历史道路模式：一条以关隘、军事防御和对山地景观适应为特征的中国山地道路；一条作为帝国基础设施和扩张轴线而设计的罗马道路。",
-  "Apri item correlato: Via Appia. Regina Viarum": "打开相关条目：阿皮亚古道 Via Appia",
+  "Apri item correlato: Via Appia. Regina Viarum": "打开相关条目：阿皮亚古道",
   "Sichuan / Shaanxi / Gansu": "四川 / 陕西 / 甘肃",
   "via storica / cultural route": "历史道路 / 文化线路",
   "2015 tentative": "2015 年预备名单",
@@ -713,14 +907,14 @@ Object.assign(I18N.zh, {
   "Il Palazzo d’Estate fu costruito a partire dal XVIII secolo, distrutto in larga parte nel 1860 e restaurato nel 1886. UNESCO lo descrive come capolavoro della progettazione del giardino paesaggistico cinese, dove colline, acque, padiglioni, palazzi, templi e ponti formano un insieme armonico.": "颐和园始建于18世纪，1860年大部分遭到破坏，并于1886年修复。UNESCO 将其描述为中国山水园林设计的杰作，在这里，山丘、水体、亭台、宫殿、寺庙和桥梁构成了一个和谐整体。",
   "Nel progetto rappresenta il rapporto tra paesaggio naturale e artificio architettonico, tra potere imperiale, estetica del giardino e armonia tra uomo e natura.": "在本项目中，它代表自然景观与建筑人工、帝国权力、园林美学以及人与自然和谐之间的关系。",
   "Il gemellaggio con Villa d’Este permette di costruire un asse comparativo tra due giardini d’acqua: Kunming Lake e le fontane di Tivoli funzionano come dispositivi paesaggistici, estetici e simbolici.": "与埃斯特别墅的结好关系使我们能够在两处水景园林之间建立比较轴线：昆明湖与蒂沃利喷泉都作为景观、美学和象征装置发挥作用。",
-  "Apri item correlato: Villa d’Este": "打开相关条目：埃斯特别墅 Villa d’Este",
+  "Apri item correlato: Villa d’Este": "打开相关条目：埃斯特别墅",
   "Pechino": "北京",
   "giardino imperiale": "皇家园林",
   "(i)(ii)(iii)": "(i)(ii)(iii)",
   "Villa d’Este a Tivoli è uno degli esempi più completi della cultura rinascimentale italiana. Il giardino, con fontane, bacini ornamentali e dispositivi idraulici, è considerato da UNESCO un esempio unico di giardino italiano del XVI secolo.": "蒂沃利的埃斯特别墅是意大利文艺复兴文化最完整的案例之一。其园林通过喷泉、装饰性水池和水力装置，被 UNESCO 视为16世纪意大利园林的独特范例。",
   "Nel progetto rappresenta il giardino come architettura dell’acqua, della meraviglia e della scenografia, ma anche come patrimonio che comunica il rapporto tra tecnica, natura e potere.": "在本项目中，它代表作为水、奇观与舞台化空间建筑的园林，同时也作为一种传达技术、自然与权力关系的遗产。",
   "Il dialogo con il Palazzo d’Estate mette in evidenza una comune centralità dell’acqua, pur in due sistemi culturali diversi: paesaggio imperiale cinese e giardino rinascimentale italiano.": "与颐和园的对话凸显了两种不同文化系统中水的共同中心性：中国皇家景观与意大利文艺复兴园林。",
-  "Apri item correlato: Palazzo d’Estate 颐和园": "打开相关条目：颐和园 Palazzo d’Estate",
+  "Apri item correlato: Palazzo d’Estate 颐和园": "打开相关条目：颐和园",
   "Tivoli, Lazio": "蒂沃利，拉齐奥",
   "villa e giardino rinascimentale": "文艺复兴别墅与园林",
   "(i)(ii)(iii)(iv)(vi)": "(i)(ii)(iii)(iv)(vi)",
@@ -744,10 +938,10 @@ Object.assign(I18N.zh, {
   "Patrimonio Mondiale UNESCO": "UNESCO 世界遗产",
   "Lista Tentativa UNESCO": "UNESCO 预备名单",
   "Shudao": "蜀道 Shudao",
-  "Via Appia. Regina Viarum": "阿皮亚古道 Via Appia",
-  "Palazzo d’Estate": "颐和园 Palazzo d’Estate",
-  "Villa d’Este": "埃斯特别墅 Villa d’Este",
-  "Villa d’Este, Tivoli": "埃斯特别墅 Villa d’Este",
+  "Via Appia. Regina Viarum": "阿皮亚古道",
+  "Palazzo d’Estate": "颐和园",
+  "Villa d’Este": "埃斯特别墅",
+  "Villa d’Este, Tivoli": "埃斯特别墅",
   "Giardini classici di Suzhou": "苏州古典园林",
   "Venezia e la sua Laguna": "威尼斯及其潟湖",
   "Sistema antico di vie montane tra Cina centrale e Sichuan": "连接中国中部与四川的古代山地道路系统"
@@ -831,17 +1025,17 @@ Object.assign(I18N.en, {
 
 /* --- No Chinese characters in IT/EN display; Chinese names only in ZH mode --- */
 Object.assign(I18N.zh, {
-  "Shudao": "蜀道 Shudao",
-  "Via Appia. Regina Viarum": "阿皮亚古道 Via Appia",
-  "Palazzo d’Estate": "颐和园 Palazzo d’Estate",
-  "Villa d’Este": "埃斯特别墅 Villa d’Este",
-  "Villa d’Este, Tivoli": "埃斯特别墅 Villa d’Este",
+  "Shudao": "蜀道",
+  "Via Appia. Regina Viarum": "阿皮亚古道",
+  "Palazzo d’Estate": "颐和园",
+  "Villa d’Este": "埃斯特别墅",
+  "Villa d’Este, Tivoli": "埃斯特别墅",
   "Giardini classici di Suzhou": "苏州古典园林",
   "Venezia e la sua Laguna": "威尼斯及其潟湖",
-  "Apri item correlato: Via Appia. Regina Viarum": "打开相关条目：阿皮亚古道 Via Appia",
-  "Apri item correlato: Shudao": "打开相关条目：蜀道 Shudao",
-  "Apri item correlato: Villa d’Este": "打开相关条目：埃斯特别墅 Villa d’Este",
-  "Apri item correlato: Palazzo d’Estate": "打开相关条目：颐和园 Palazzo d’Estate",
+  "Apri item correlato: Via Appia. Regina Viarum": "打开相关条目：阿皮亚古道",
+  "Apri item correlato: Shudao": "打开相关条目：蜀道",
+  "Apri item correlato: Villa d’Este": "打开相关条目：埃斯特别墅",
+  "Apri item correlato: Palazzo d’Estate": "打开相关条目：颐和园",
   "Apri item correlato: Venezia e la sua Laguna": "打开相关条目：威尼斯及其潟湖",
   "Apri item correlato: Giardini classici di Suzhou": "打开相关条目：苏州古典园林",
   "In relazione con:": "关联对象：",
@@ -875,13 +1069,13 @@ Object.assign(I18N.en, {
 
 /* --- Final zh name overrides after CJK cleanup --- */
 Object.assign(I18N.zh, {
-  "Shudao": "蜀道 Shudao",
-  "Palazzo d’Estate": "颐和园 Palazzo d’Estate",
+  "Shudao": "蜀道",
+  "Palazzo d’Estate": "颐和园",
   "Giardini classici di Suzhou": "苏州古典园林",
   "Venezia e la sua Laguna": "威尼斯及其潟湖",
-  "Via Appia. Regina Viarum": "阿皮亚古道 Via Appia",
-  "Villa d’Este": "埃斯特别墅 Villa d’Este",
-  "Villa d’Este, Tivoli": "埃斯特别墅 Villa d’Este"
+  "Via Appia. Regina Viarum": "阿皮亚古道",
+  "Villa d’Este": "埃斯特别墅",
+  "Villa d’Este, Tivoli": "埃斯特别墅"
 });
 
 function normalizeI18nKey(text) {
