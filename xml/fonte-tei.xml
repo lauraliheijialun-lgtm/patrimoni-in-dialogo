@@ -9,7 +9,7 @@
   </teiHeader>
   <text>
     <body>
-      <p>Nel <date when="2024-11-08">novembre 2024</date>, durante l'incontro tra <persName ref="https://www.wikidata.org/wiki/Q15031">Sergio Mattarella</persName> e <persName ref="https://www.wikidata.org/wiki/Q15031">Xi Jinping</persName>, la cooperazione culturale tra <placeName ref="https://www.geonames.org/1814991">Cina</placeName> e <placeName ref="https://www.geonames.org/3175395">Italia</placeName> è stata presentata anche attraverso il modello dei gemellaggi tra siti del patrimonio mondiale.</p>
+      <p>Nel <date when="2024-11-08">novembre 2024</date>, durante l'incontro tra <persName ref="https://www.wikidata.org/wiki/Q3956186">Sergio Mattarella</persName> e <persName ref="https://www.wikidata.org/wiki/Q15031">Xi Jinping</persName>, la cooperazione culturale tra <placeName ref="https://www.geonames.org/1814991">Cina</placeName> e <placeName ref="https://www.geonames.org/3175395">Italia</placeName> è stata presentata anche attraverso il modello dei gemellaggi tra siti del patrimonio mondiale.</p>
       <p>Il progetto interpreta questi gemellaggi come relazioni culturali fra <rs type="heritage">patrimoni materiali</rs>, <rs type="concept">paesaggi storici</rs> e <rs type="concept">memorie territoriali</rs>.</p>
     </body>
   </text>
